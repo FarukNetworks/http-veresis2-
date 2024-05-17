@@ -1,0 +1,69 @@
+{% extends 'layout.twig' %}
+
+{% set title = 'Registracija uporabnika '  %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+       
+    <div class="login-form-center">
+        <h1 >Registracija uporabnika za takojšen dostop</h1>
+        <br />
+        <p>Želite takojšen dostop do aplikacije ? Vse, kar potrebujete je elektronski naslov...</p>
+        <br />
+        
+        {% if flash %}{{ flash|raw }}{% endif %}
+        {% if errors %}
+            {% for error in errors %}
+                <p class="napisError">{{ error }}</p>
+            {% endfor %}
+        {% endif %}    
+        <p class="clientNapisError"></p>
+        <p class="clientNapisErrorNoMatch"></p>
+        <form class="form-horizontal" autocomplete="off" method="post" action="registracija">
+            <div class="form-group">
+                <label for="email" class="col-sm-4 control-label">Elektronski naslov:</label>
+                <div class="col-sm-8">
+                  <input type="email" class="form-control" id="username" name="email" value="{{ postParams.email }}" placeholder="Vnesite elektronski naslov">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-sm-4 control-label">Geslo:<br><span class="visible-xs" style="font-size: 8px">(Geslo mora biti dolgo minimalno 6 znakov. Vsebovati mora: 1 veliko črko, 1 majhno črko in 1 številko)</span></label>
+                <div class="col-sm-8">
+                  <input type="password" class="form-control" id="password" name="password" placeholder="Vnesite geslo">
+                  <span class="hidden-xs" style="font-size: 8.5px; float: left">(Geslo mora biti dolgo minimalno 6 znakov. Vsebovati mora: 1 veliko črko, 1 majhno črko in 1 številko)</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password2" class="col-sm-4 control-label">Ponovi geslo:</label>
+                <div class="col-sm-8">
+                  <input type="password" class="form-control" id="password2" name="password2" placeholder="Ponovno vnesite geslo">
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    <div id="captcha-img" class="pull-left">
+                        <img src="{{ captchaBuilder.inline }}">
+                    </div>
+                    <span class="glyphicon glyphicon-refresh captcha-refresh col-sm-3"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="captcha" class="col-sm-4 control-label">Prepiši zgornjo besedo:</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="captcha" name="captcha" placeholder="Vnesite besedo, ki jo vidite na sliki">
+                </div>
+            </div>
+            <input type="hidden" name="csrf_name" value="{{ csrf.name }}">
+            <input type="hidden" name="csrf_value" value="{{ csrf.value }}">
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <button type="submit" class="btn btn-primary" aria-label="Left Align">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Nadaljuj
+                    </button>
+                </div>
+            </div>
+        </form>        
+    </div>
+
+
+{% endblock %}

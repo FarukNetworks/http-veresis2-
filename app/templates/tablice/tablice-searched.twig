@@ -1,0 +1,72 @@
+{% extends 'layout.twig' %}
+
+{% set title = 'Seznam naročil'  %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+	{% include 'sidebar-button.twig' %}
+
+	<ul class="breadcrumb">
+		<li class="active">Uničene tablice</li>
+	</ul>
+	<h2 class="sub-header">Iskanje uničenih tablic</h2>
+	<div>&nbsp</div>
+	<form class="navbar-form" action="tablice-search.html">
+		<input type="text" class="form-control" placeholder="Vpis registracije" autofocus>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+	</form>
+	<div>&nbsp</div>
+	<div class="row">
+		<div class="col-sm-8">
+			<!--<p>Vnesite registracijo.</p>-->
+			<p>Iskanje registracije: KR3557A.</p>
+		</div>
+		<div class="col-sm-4">
+			<button class="btn btn-primary pull-right poslji">pošlji</button>
+		</div>
+	</div>
+
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Datum uničenja</th>
+					<th>Paket</th>
+					<th>Naročnik</th>
+					<th>Registracija</th>
+					<th>Prepoznava</th>
+					<th>Pošlji</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>9.12.2015</td>
+					<td>2015 00298</td>
+					<td>Upravna enota Kamnik</td>
+					<td>KR3557A</td>
+					<td><a data-toggle="modal" data-target="#myModal">podrobnosti</a></td>
+					<td><input type="checkbox" value="poslji-po-posti"></td>
+				</tr>
+				<tr>
+					<td>9.12.2015</td>
+					<td>2015 00298</td>
+					<td>Upravna enota Kamnik</td>
+					<td>KR3557A</td>
+					<td><a data-toggle="modal" data-target="#myModal">podrobnosti</a></td>
+					<td><input type="checkbox" value="poslji-po-posti"></td>
+				</tr>
+			</tbody>
+		</table>
+
+
+	</div>
+
+	{% include 'modal.twig' %}
+
+
+</div>
+
+{% endblock %}

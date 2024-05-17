@@ -1,0 +1,25 @@
+{% extends 'layout.twig' %}
+
+{% set title = 'Stran ni najdena'  %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+
+	<div style="padding-top: 40px; padding-bottom: 40px; background-color: #2f2f2f; width: 100%; height: 100%; position: absolute; top: 0; left: 0;">
+
+		<div class="container">
+			<a href="http://kig.si/"><img src="{{ constant('APPASSETS') }}/img/cgp/logo.png" class="logo" alt="kig" /></a>
+
+			<div class="text-center">
+				<h1 class="errorPage">404</h1>
+				<h2 class="errorPageHeader">Ups, stran ni najdena!</h2>
+				<p class="errorPageParagraph">Povezava je morda napačna</p>
+				<p class="errorPageSubParagraph">ali pa je bila stran odstranjena.</p>
+				<div>&nbsp;</div>
+				<a href="{{ constant('APPBASEURL') }}"><button class="btn btn-primary">začetna stran</button></a>
+			</div>
+
+		</div>
+
+	</div>
+{% endblock %}

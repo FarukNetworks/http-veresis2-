@@ -1,0 +1,21 @@
+{% extends 'layout.twig' %}
+
+{% set title = 'Aktivacija računa'  %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <h1>Aktivacija računa</h1>
+
+    {% if errors is not empty %}
+        <br />
+        <div class="alert alert-danger" role="alert">
+            <ul>
+            {% for error in errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+{% endblock %}
+

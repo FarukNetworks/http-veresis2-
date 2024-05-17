@@ -1,0 +1,130 @@
+{% extends 'layout.twig' %}
+
+{% set title = 'Seznam naročil - podrobnosti'  %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+	{% include 'preloader.twig' %}
+
+	{% include 'sidebar-button.twig' %}
+
+	<ul class="breadcrumb">
+		<li><a href="{{ constant('APPBASEURL')}}narocila">Seznam naročil</a></li>
+		<li class="active">Podrobnosti</li>
+	</ul>
+
+	<h2 class="sub-header">Podrobnosti naročila št. <span data-bind="text: orderCode"></span> - <span data-bind="text: orderExternal"></span></h2>
+	<div>&nbsp</div>
+
+	<h3>Naročilo</h3>
+
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Št. naročila</th>
+					<th>Datum</th>
+					<th>Naročnik</th>
+					<th>Količina</th>
+					<th>Produkt</th>
+					<th>Trenutno stanje</th>
+					<th>Tip naročila</th>
+					<th>Območje</th>
+					<th>Grb</th>					
+				</tr>
+			</thead>
+			<tbody data-bind="foreach: order">
+				<tr>
+					<td data-bind="html: formatters.orderNumberFormatter($data)"></td>
+	                <td data-bind="text: formatters.dateFormatter(OrderDate)"></td>
+	                <td data-bind="text: CustomerName"></td>
+	                <td data-bind="text: Quantity"></td>
+	                <td data-bind="text: ProductTypeName"></td>
+	                <td data-bind="text: formatters.orderStateFormatterFromValue(State), attr: { class: formatters.orderDetailStateFormatterCssClassFromValue(State) }"></td>
+	                <td data-bind="html: formatters.formatOrderType(OrderType)"></td>
+	                <td data-bind="text: DistrictCode"></td>
+	                <td data-bind="html: formatters.stickerFormatterFromValue(AdministrativeUnitName, AdministrativeUnitSticker)"></td>	                
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+		<h3>Proizvodni nalogi</h3>
+		<p data-bind="visible: !productionOrders().length">To naročilo še ni nima proizvodnih nalogov.</p>
+
+		<div class="table-responsive" data-bind="visible: productionOrders().length > 0">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Datum</th>
+						<th>Tip tablice</th>
+						<th>Od</th>
+						<th>Do</th>
+						<th>Število</th>
+						<th>Stanje</th>
+					</tr>
+				</thead>
+				<tbody data-bind="foreach: productionOrders">
+					<tr>
+						<td data-bind="text: formatters.dateTimeFormatter(CreatedTime)"></td>
+						<td data-bind="text: PlateTypeName"></td>
+						<td data-bind="text: PlateNumberFrom"></td>
+	               		<td data-bind="text: PlateNumberTo"></td>
+						<td data-bind="text: Count"></td>
+						<td data-bind="html: formatters.productionOrderStateFormatterFromValue(ProductionOrderState)"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<h3>Odpreme</h3>
+
+		<p data-bind="visible: !dispatches().length">To naročilo še ni bilo odpremljeno.</p>
+
+		<div class="table-responsive" data-bind="visible: dispatches().length">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Št. odpreme</th>
+						<th>datum</th>
+						<th>Naročnik</th>
+						<th>Stanje</th>
+						<th>Dobavnica</th>
+						<th>Odprema po pošti</th>
+					</tr>
+				</thead>
+				<tbody data-bind="foreach: dispatches">
+					<tr>
+						<td><a data-bind="attr: { href: siteUrl + 'odpreme/' + Id}"><span data-bind="text: DispatchNumber"></td>
+						<td data-bind="text: formatters.dateFormatter(DispatchDate)"></td>
+						<td data-bind="text: CustomerName"></td>
+			            <td data-bind="text: formatters.dispatchStateFormatterFromValue(State)"></td>
+			            <td data-bind="text: DeliveryNoteErpCode"></td>	            
+			           	<td data-bind="text: formatters.booleanFormatter(DispatchByPost)"></td>
+	        		</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+
+
+<script src="{{ constant('APPASSETS') }}/js/viewmodels/vm.orderDetail.js"></script>
+
+<script> 
+
+var orderDetailViewModel = new orderDetailViewModel();
+
+orderDetailViewModel.init('{{ orderId }}');
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+
+<ul class="pagination">
+    <li class="first-page">
+        <a data-bind="click: goToFirstPage">
+            <span class="glyphicon glyphicon-step-backward"></span>
+        </a>
+    </li>
+    <li class="prev-page">
+        <a data-bind="click: goToPrevPage">
+            <span class="glyphicon glyphicon-triangle-left"></span>
+        </a>
+    </li>
+</ul>
+<div class="current-page">
+    <span data-bind="text: requestedPage"></span>
+    <span>od skupno</span>
+    <span data-bind="text: totalPages"></span>
+    <span>strani</span>
+</div>
+<ul class="pagination next">
+    <li class="next-page">
+        <a data-bind="click: goToNextPage">
+            <span class="glyphicon glyphicon-triangle-right"></span>
+        </a>
+    </li>
+    <li class="last-page">
+        <a data-bind="click: goToLastPage">
+            <span class="glyphicon glyphicon-step-forward"></span>
+        </a>
+    </li>
+</ul>
+
+<div class="page-number">
+    <span>vrstic na strani: </span>
+    <select data-bind="options: pageSizeOptions, value: selectedPageSizeOption"></select>
+</div>

@@ -1,0 +1,66 @@
+{% extends 'layout.twig' %}
+
+{% set title = 'Paketi - podrobnosti'  %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	
+	{% include 'preloader.twig' %}
+
+	{% include 'sidebar-button.twig' %}
+
+
+	<ul class="breadcrumb">
+		<li><a href="{{ constant('APPBASEURL')}}paketi">Paketi za uničenje</a></li>
+		<li class="active">Podrobnosti o paketu</li>
+	</ul>
+
+	<h2 class="sub-header">Podrobnosti paketa št. {{ packSerialNumber }}</h2>
+
+
+
+	<div id="listGrid" class="table-responsive" data-bind="with: packDetailGridViewModel">
+        
+        <table class="table table-striped">
+            <thead class="packDetailTh">
+            <tr data-bind="foreach: gridColumns">
+                <th data-bind="click: $parent.sortGrid, text: title, css: cssClass"></th>
+            </tr>
+            </thead>
+
+            <tbody data-bind="foreach: gridData">
+            <tr>
+                <td data-bind="text: formatters.dateFormatter(destructionDateTime)"></td>
+                <td data-bind="text: asciiPlateNumber"></td>
+                <td><a data-toggle='modal' data-target='#myModal' class="showPlate" data-bind="click: $root.showPlateDetail">podrobnosti</a></td>
+            </tr>
+            </tbody>
+
+        </table>
+		{% include 'pagination.twig' %}
+    </div>
+
+{% include 'modal.twig' %}
+
+
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+
+
+<script src="{{ constant('APPASSETS') }}/js/infrastructure/dataGrid.js"></script>
+<script src="{{ constant('APPASSETS') }}/js/viewmodels/common.destroyedPlate.js?ver-1"></script>
+<script src="{{ constant('APPASSETS') }}/js/viewmodels/vm.packDetail.js?ver-1"></script>
+<script> 
+
+var packDetailViewModel = new packDetailViewModel();
+packDetailViewModel.init('{{ packageId }}');
+
+</script>
+
+{% endblock %}

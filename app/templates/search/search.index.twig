@@ -1,0 +1,117 @@
+{% extends 'layout.twig' %}
+
+{% set title = 'Iskanje' %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block breadcrumbs %} 
+    <ol class="breadcrumb">
+        <li><a href="{{ constant('rootChoosePage') }}">Vsi znaki</a></li>
+        {% if seacrhString is not empty %}
+        <li>Rezultati iskanja za: "{{ seacrhString }}"</li>
+        {% endif %}
+    </ol>
+{% endblock %}
+
+{% block content %}
+    <h1>Rezultati iskanja za: "{{ seacrhString }}"</h1>
+    <hr />
+    
+    {% if searchResults is not empty %}
+        
+    <div id="search-results-wrap">
+        
+    {% for product in searchResults %}
+        <div class="search-result-wrap">
+            
+            {% if product.slug is not empty %}
+                {% set url = constant('editProduct') ~ '/' ~ product.code ~ '/' ~ product.slug %}
+            {% else %}
+                {% set url = constant('editProduct') ~ '/' ~ product.code %}
+            {% endif %}
+            
+            {% if product.width is not empty %}
+                {% set imgfile = product.slug ~ '-' ~ product.code ~ '-144.png' %}
+            {% else %}
+                {% set imgfile = 'noimage.jpg' %}
+            {% endif %}
+            
+            <div class="col-sm-3">
+                <a href="{{url}}" title="{{ product.code }} {{ product.name }}">
+                    <img src="{{ constant('APPBASEURL') }}images/{{imgfile}}" width="100" alt="{{ product.code }} {{ product.name }}" title="{{ product.code }} {{ product.name }}">
+                </a>
+            </div>
+            <div class="col-sm-8">
+                <div class="col-sm-3">
+                    <b>Oznaka:</b>
+                </div>
+                <div class="col-sm-9">
+                    <b>{{ product.code_search|raw}}</b>
+                </div>
+                
+                {% if product.name is not empty %}
+                <div class="col-sm-3">
+                    <b>Pomen:</b>
+                </div>
+                <div class="col-sm-9">
+                    <b>{{ product.name|raw}}</b><br /><br />
+                </div>
+                {% endif %}
+                
+                {% if product.labeling_purpose is not empty %}
+                <div class="col-sm-3">
+                    <b>Namen označevanja:</b>
+                </div>
+                <div class="col-sm-9">
+                    {{ product.labeling_purpose|raw}}<br /><br />
+                </div>
+                {% endif %}
+
+                {% if product.additional_requirements is not empty %}
+                <div class="col-sm-3">
+                    <b>Dodatne zahteve:</b>
+                </div>
+                <div class="col-sm-9">
+                    {{ product.additional_requirements|raw}}<br /><br />
+                </div>
+                {% endif %}
+                
+                {% if product.placement_conditions is not empty %}
+                <div class="col-sm-3">
+                    <b>Pogoji za postavitev:</b>
+                </div>
+                <div class="col-sm-9">
+                    {{ product.placement_conditions|raw}}<br /><br />
+                </div>
+                {% endif %}
+                
+                {% if product.catpar_name is not empty %}
+                <div class="col-sm-3">
+                    <b>Skupina:</b>
+                </div>
+                <div class="col-sm-9">
+                    <a href="{{ constant('rootChoosePage')}}/{{ product.catpar_slug }}">{{ product.catpar_name}}</a>
+                </div>
+                {% endif %}
+                
+                {% if product.subcat_name is not empty %}
+                <div class="col-sm-3">
+                    <b>Podskupina:</b>
+                </div>
+                <div class="col-sm-9">
+                    <a href="{{ constant('rootChoosePage')}}/{{ product.catpar_slug }}/{{ product.subcat_slug}}">{{ product.subcat_name}}</a>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-sm-1">
+                <br /><br /><a class="btn btn-default btn-sm" href="{{url}}" title="{{ product.code }} {{ product.name }}">Izberi</a>
+            </div>
+        </div>
+    {% endfor %}
+        
+    </div>        
+        
+    {% else %}
+        <p>Ni rezultatov iskanja</p>
+    {% endif %}    
+
+{% endblock %}

@@ -1,0 +1,104 @@
+<?php
+return [
+    'settings' => [
+        'app_development_mode' => APPDEVELOPMENT,
+        // set to false in production
+        'displayErrorDetails' => false, 
+        // ViewEngine settings
+        'view' => [
+            'template_path' => __DIR__ . '/../templates',
+            'twig' => [
+                'cache' => __DIR__ . '/../../cache/twig',
+                'debug' => true,
+                'auto_reload' => true
+            ],
+        ],
+        // Logger Monolog settings
+        'logger' => [
+            'name' => 'LppmCrmWeb',
+            'path' => __DIR__ . '/../../logs/log_'.  date('Y-m-d').'.log',
+        ],
+        'database' => [
+            'sibit' => [
+                'host'      => 'randy',
+                'database'  => 'kiglppmcrm',
+                'username'  => 'root',
+                'password'  => 'Sroot123',
+                'table_prefix' => 'crm_'
+            ],
+            'kigtest' => [
+                'host'      => 'localhost',
+                'database'  => 'kig_test',
+                'username'  => 'kig_test',
+                'password'  => 'kvgwwdvbmqdw',
+                'table_prefix' => 'crm_'
+            ],
+            'kigproduction' => [ 
+                'host'      => 'localhost',
+                'database'  => 'kig_veresis',
+                'username'  => 'kig_veresis',
+                'password'  => 'uqprxert4hfg',
+                'table_prefix' => 'crm_'
+            ]
+        ],
+        'externalApiUrl' => [
+            'sibit' => [
+                'lppmApiUrl' => [
+                    'baseUrl' => 'http://localhost:60422/lppmapi/api/',
+                    'loginUrl' => 'Account/Login/',
+                    'cookieName' => '.ASPXAUTH',
+                    'loginData' => [
+                        'username' => 'VeresisCrm',
+                        'password' => 'Veresis.Crm:1620'
+                    ]
+                ]
+            ],
+            'kigtest' => [
+                'lppmApiUrl' => [
+                    'baseUrl' => 'https://testbe.kig.si:444/lppmapi/api/',
+                    'loginUrl' => 'Account/Login/',
+                    'cookieName' => '.ASPXAUTH',
+                    'loginData' => [
+                        'username' => 'VeresisCrm',
+                        'password' => 'Veresis.Crm:1620'
+                    ]
+                ]
+            ],
+            'kigproduction' => [
+                'lppmApiUrl' => [
+                    'baseUrl' => 'https://veresisbe.kig.si:446/lppmapi/api/',
+                    'loginUrl' => 'Account/Login/',
+                    'cookieName' => '.ASPXAUTH',
+                    'loginData' => [
+                        'username' => 'VeresisCrm',
+                        'password' => 'Veresis.Crm:1620'
+                    ]
+                ]
+            ]
+        ],
+        'mailMeblo' => '', //splet@sibit.si
+        'mailSender' => [
+            'sibit' => [
+                'mailFrom'      => 'veresis@kig.si',
+                'mailServerAuthUser'  => 'veresis',
+                'mailServerAuthPassword'  => 'Kig.V3r3s1s.123',
+                'mailServerHost' => 'mail.kig.si',
+                'mailServerPort'  => '587'
+            ],
+            'kigtest' => [
+                'mailFrom'      => 'veresis@kig.si',
+                'mailServerAuthUser'  => 'veresis',
+                'mailServerAuthPassword'  => 'Kig.V3r3s1s.123',
+                'mailServerHost' => 'mail.kig.si',
+                'mailServerPort'  => '587'
+            ],
+            'kigproduction' => [
+                'mailFrom'      => 'veresis@kig.si',
+                'mailServerAuthUser'  => 'veresis',
+                'mailServerAuthPassword'  => 'Kig.V3r3s1s.123',
+                'mailServerHost' => 'mail.kig.si',
+                'mailServerPort'  => '587'
+            ]
+        ]
+    ],    
+];

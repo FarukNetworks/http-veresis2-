@@ -1,0 +1,62 @@
+<!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg" >
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4>Podrobnosti o uničeni tablici</h4>
+                </div>
+                <div class="modal-body platebody">
+                    {% include 'preloaderImage.twig' %}
+                    <div class="row" data-bind="with: plateDetail">
+                        <div class="col-sm-5">
+                            <div class="table-responsive">
+                                <table class="table table-unicene">
+                                    <tbody >
+                                        <tr>
+                                            <td>pozicija:</td>
+                                            <td><span data-bind="text: pos + 1"></span> / <span data-bind="text: totalNumber"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>registracija:</td>
+                                            <td data-bind="text: asciiPlateNumber"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>datum:</td>
+                                            <td data-bind="text: formatters.dateTimeFormatter(destructionDateTime)"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>paket:</td>
+                                            <td data-bind="text: destroyedPackageSerialNumber"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>naročnik:</td>
+                                            <td data-bind="text: customerName"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <img class="registrationPicture img-responsive" data-bind="attr: { src: 'data:image/png;base64,' + picture }"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer" data-bind="with: plateDetail">
+                    <div class="col-sm-5 col-xs-4">
+                        <button type="button" class="btn btn-primary pull-left" data-bind="command: $parent.sendViewedPlate, activity: $parent.sendViewedPlate.isExecuting">pošlji</button>
+                    </div>
+                        <div class="col-sm-4 col-xs-8">
+                            <span class="back-next prev" data-role="none" data-bind="click: $parent.previusPlate">prejšnja<div class="slider-bottom"></div></span>
+                            <span class="back-next next" data-role="none" data-bind="click: $parent.nextPlate">naslednja<div class="slider-bottom"></div></span>
+                        </div>
+                    <div class="col-sm-3 zapriModal">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">zapri</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>

@@ -1,0 +1,115 @@
+{% extends 'layout.twig' %}
+
+{% set title = 'Odpreme - podrobnosti'  %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+	{% include 'preloader.twig' %}
+
+	{% include 'sidebar-button.twig' %}
+	
+	<ul class="breadcrumb">
+		<li><a href="{{ constant('APPBASEURL')}}odpreme">Odpreme</a></li>
+		<li class="active">Podrobnosti</li>
+	</ul>
+
+	<h2 class="sub-header">Podrobnosti odpreme št. <span data-bind="text: dispatchCode"></span></h2>
+	<div>&nbsp</div>
+
+    <div class="table-responsive">
+
+    	<table class="table table-striped">
+            <thead>
+            	<th>Stranka</th>
+            	<th>Št. dobavnice</th>
+            	<th>Stanje odpreme</th>
+            	<th>Št. dobavnice</th>
+            	<th>Odprema po pošti</th>
+            	<th>Preklicano</th>
+            	<th>Datum</th>
+            </thead>
+            <tbody data-bind="foreach: dispatch">
+            <tr>
+                <td data-bind="text: CustomerName"></td>
+                <td data-bind="text: DeliveryNoteErpCode"></td>
+                <td data-bind="text: formatters.dispatchStateFormatterFromValue(State)"></td>
+                <td data-bind="text: formatters.dateFormatter(DeliveryNoteDate)"></td>
+                <td data-bind="text: formatters.booleanFormatter(DispatchByPost)"></td>
+                <td data-bind="text: formatters.dateFormatter(CancelTime)"></td>
+                <td data-bind="text: formatters.dateFormatter(DispatchDate)"></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <div>&nbsp</div>
+
+	<h3>Škatle</h3>
+
+	<div class="table-responsive">
+		<table class="table table-striped">
+        <thead>
+        	<th>Koda šk.</th>
+        	<th>Tip</th>
+        	<th>Custom?</th>
+        	<th>Koda pošt. nal</th>
+        	<th>Cena (C):</th>
+        	<th>Pošt. pl. prej</th>
+        </thead>
+        <tbody data-bind="foreach: boxes">
+        <tr>
+            <td><a data-bind="attr: { href: siteUrl + 'skatle/' + BoxId}"><span data-bind="text: BoxCode"></span></a></td>
+            <td data-bind="text: BoxTypeName"></td>
+            <td data-bind="text: formatters.booleanFormatter(IsCustom)"></td>
+            <td data-bind="text: PostalLabelCode"></td>
+            <td data-bind="text: PriceForDispatch"></td>
+            <td data-bind="text: formatters.booleanFormatter(PostagePaidByRecipient)"></td>
+        </tr>
+        
+        </tbody>
+    </table>
+	</div>
+
+	<h3>Proizvodni nalogi</h3>
+
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Številka</th>
+					<th>Pantheon koda</th>
+					<th>Št. naročila</th>
+				</tr>
+			</thead>
+			<tbody data-bind="foreach: productionOrders">
+		        <tr>
+		            <td data-bind="foreach: ProdOrders"><span data-bind="text: SerialNumber"></span><br /></td>
+		            <td data-bind="text: ErpOrderCode"></td>
+		            <td><a data-bind="attr: { href: siteUrl + 'narocila/' + OrderId}"><span data-bind="text: OrderNumber"></span></a></td>
+		        </tr>
+	        </tbody>
+
+		</table>
+	</div>
+</div>
+
+
+{% endblock %}
+
+{% block javascript %}
+
+
+<script src="{{ constant('APPASSETS') }}/js/viewmodels/vm.dispatchDetail.js"></script>
+<script> 
+
+var dispatchDetailViewModel = new dispatchDetailViewModel();
+
+dispatchDetailViewModel.init('{{ dispatchId }}');
+
+</script>
+
+{% endblock %}

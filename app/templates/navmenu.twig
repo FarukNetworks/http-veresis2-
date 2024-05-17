@@ -1,0 +1,24 @@
+{% if authdata is not empty %}
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="{{ constant('APPBASEURL') }}"><img src="{{ constant('APPASSETS') }}/img/cgp/preloader.png" class="logo2" alt="kig veresis crm" /></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    {% if authdata is not empty %}
+                    <li><a><span class="glyphicon glyphicon-user"> </span> {{ authdata.full_name }}</a></li>
+                    {% endif %} 
+                    <li><a href="{{ constant('APPBASEURL') }}menjava-gesla">menjava gesla</a><div class="slider-bottom"></div></li>
+                    <li><a class="logout">odjava</a><div class="slider-bottom"></div></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endif %} 

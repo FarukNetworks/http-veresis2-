@@ -1,0 +1,95 @@
+{% extends 'layout.twig' %}
+
+{% set title = 'Iskanje ponarejenih tablic'  %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+	{% include 'preloader.twig' %}
+
+    {% include 'sidebar-button.twig' %}
+
+	<ul class="breadcrumb">
+		<li class="active">Ponarejene tablice</li>
+	</ul>
+	<h2 class="sub-header">Iskanje ponarejenih tablic</h2>
+	<div>&nbsp</div>
+
+	<form class="navbar-form"> 
+		<input type="text" class="form-control" id="searchValue" placeholder="Vpis registracije" data-bind="value: searchString" autofocus>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button class="btn btn-primary searchButton" data-bind="command: doSearchFake, activity: doSearchFake.isExecuting"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+	</form>
+
+	<div>&nbsp</div>
+
+    <div class="row">
+        <div class="col-sm-8">
+            <p class="searchErrorText"></p>
+            <p class="searchText">Vnesite registracijo.</p>
+        </div>
+    </div>
+    <div class="searchPlateText">
+        <p data-bind="visible: platesCount() <= 0">Ni najdenih rezultatov iskanja, prosimo vnesite pravilen iskalni niz. <a href="{{ constant('APPBASEURL')}}ponarejene-tablice">Nazaj na vse ponarejene tablice</a>.</p>
+    </div>
+    <div>&nbsp</div>
+    <div>&nbsp</div>
+
+    {% include 'preloaderSearch.twig' %}
+
+    <div>
+
+        <form class="navbar-form" data-bind="visible: canViewSubUnits">
+            <select class="form-control" autofocus data-bind="options: customerList, optionsValue: 'Id', optionsText: 'Name', value: selectedCustomerId, optionsCaption: 'Vse stranke', event: { change: changeCustomer}">
+            </select>
+        </form>
+
+        <div>&nbsp</div>
+
+
+
+    	<div id="listGrid" class="table-responsive" data-bind="with: fakePlatesGridViewModel">
+            
+            <table class="table table-striped">
+                <thead>
+                <tr data-bind="foreach: gridColumns">
+                    <th data-bind="click: $parent.sortGrid, text: title, css: cssClass"></th>
+                </tr>
+                </thead>
+
+                <tbody data-bind="foreach: gridData">
+                <tr>
+                    <td data-bind="text: formatters.dateTimeFormatter(destructionDateTime)"></td>
+                    <td data-bind="text: destroyedPackageSerialNumber"></td>
+                    <td data-bind="text: customerName"></td>
+                    <td data-bind="text: asciiPlateNumber"></td>
+                    <td><a data-toggle='modal' data-target='#myModal' class="showPlate" data-bind="click: $root.showPlateDetail">podrobnosti</a></td>
+                </tr>
+                </tbody>
+
+            </table>
+    		{% include 'pagination.twig' %}
+        </div>
+
+        {% include 'modal-fakePlate.twig' %}
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+
+
+<script src="{{ constant('APPASSETS') }}/js/infrastructure/dataGrid.js"></script>
+<script src="{{ constant('APPASSETS') }}/js/viewmodels/common.destroyedPlate.js?ver-1"></script>
+<script src="{{ constant('APPASSETS') }}/js/viewmodels/vm.searchFakePlate.js"></script>
+<script> 
+
+var searchFakePlateViewModel = new searchFakePlateViewModel();
+searchFakePlateViewModel.init();
+
+</script>
+
+{% endblock %}

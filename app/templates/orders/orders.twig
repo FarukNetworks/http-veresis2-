@@ -1,0 +1,112 @@
+{% extends 'layout.twig' %}
+
+{% set title = 'Seznam naročil'  %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"> 
+	
+	{% include 'preloader.twig' %}
+
+	{% include 'sidebar-button.twig' %}
+
+	<ul class="breadcrumb">
+		<li class="active">Seznam naročil</li>
+		<!--<li class="active">Podrobnosti</li>-->
+	</ul>
+
+	{# <form class="navbar-form" data-bind="visible: canViewSubUnits">
+		<select class="form-control" autofocus data-bind="options: customerList, optionsValue: 'Id', optionsText: 'Name', value: selectedCustomerId, optionsCaption: 'Vse stranke', event: { change: changeCustomer}">
+		</select>
+	</form> #}
+
+    <div class="row order-filters">
+        <div class="col-md-2" data-bind="visible: canViewSubUnits">
+            <div>
+                <b>Stranka</b>
+            </div>
+            <div>
+                <select class="form-control" autofocus data-bind="options: customerList, optionsValue: 'Id', optionsText: 'Name', value: selectedCustomerId, optionsCaption: 'Vse stranke', event: { change: changeCustomer}">
+                </select>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div>
+                <b>Tip naročila</b>
+            </div>
+            <div data-bind="foreach: orderTypes">
+                <input type="checkbox" data-bind="attr: { value: code }, checked: $parent.orderTypeSelection"/>&nbsp;
+                <span style="margin: 0;" data-bind="text: name, attr: { for: code }"></span><br/>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div>
+                <b>Stanje naročila</b>
+            </div>
+            <div data-bind="foreach: orderStates">
+                <input type="checkbox" data-bind="attr: { value: code }, checked: $parent.orderStateSelection"/>&nbsp;
+                <span style="margin: 0;" data-bind="text: name, attr: { for: code }"></span><br/>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <button class="btn btn-default btn-sm filter-button" data-bind="click: clearFilters"  style="margin-bottom: 5px; width: 83px;">Počisti filtre</button>
+                <br/>
+                <button class="btn btn-primary btn-sm filter-button" data-bind="click: executeFilters" style="width: 83px;">Prikaži</button>                
+            </div>
+        </div>
+    </div>
+
+
+	<div id="listGrid" class="table-responsive" data-bind="with: ordersGridViewModel">
+        
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr data-bind="foreach: gridColumns">
+                <th data-bind="click: $parent.sortGrid, html: title, css: 'cssClass'"></th>
+            </tr>
+            </thead>
+            <tbody data-bind="foreach: gridData">
+            <tr data-bind="click: $root.openDetail.bind($data)">
+                <td data-bind="html: formatters.orderNumberFormatter($data)"></td>
+                <td data-bind="text: formatters.dateFormatter(OrderDate)"></td>
+                <td data-bind="text: CustomerName"></td>
+                <td data-bind="text: Quantity"></td>
+                <td data-bind="text: ProductTypeName"></td>
+                <td data-bind="text: formatters.orderStateFormatterFromValue(State), attr: { class: formatters.orderStateFormatterCssClassFromValue(State) }"></td>
+                <td data-bind="text: formatters.orderTypeFormatterFromValue(OrderType)"></td>
+                <td data-bind="text: DistrictCode"></td>
+                <td data-bind="html: formatters.stickerFormatterFromValue(AdministrativeUnitName, AdministrativeUnitSticker)"></td>
+                <td data-bind="text: IntervalFrom"></td>
+                <td data-bind="text: IntervalTo"></td>                
+            </tr>
+            
+            </tbody>
+        </table>
+		{% include 'pagination.twig' %}
+    </div>
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+
+
+<script src="{{ constant('APPASSETS') }}/js/infrastructure/dataGrid.js"></script>
+<script src="{{ constant('APPASSETS') }}/js/viewmodels/vm.order.js"></script>
+<script> 
+
+var orderViewModel = new orderViewModel();
+
+orderViewModel.init();
+
+</script>
+
+
+
+
+
+
+{% endblock %}

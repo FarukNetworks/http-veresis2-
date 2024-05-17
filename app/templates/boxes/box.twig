@@ -1,0 +1,96 @@
+{% extends 'layout.twig' %}
+
+{% set title = 'Škatle - podrobnosti'  %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+	{% include 'preloader.twig' %}
+	
+	{% include 'sidebar-button.twig' %}
+
+	<ul class="breadcrumb">
+		<li><a href="{{ constant('APPBASEURL')}}skatle">Škatle</a></li>
+		<li class="active">Podrobnosti</li>
+	</ul>
+	<div>&nbsp</div>
+
+	<h2 class="sub-header">Podrobnosti škatle št. <span data-bind="text: boxCode"></span></h2>
+	<div>&nbsp</div>
+
+
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Št. škatle</th>
+					<th>Datum</th>
+					<th>Naročnik</th>
+					<th>Tip škatle</th>
+					<th>Stanje</th>
+					<th>Način odpreme</th>
+					<th>Poštarska nalepka</th>
+					<th>Št. odpreme</th>
+				</tr>
+			</thead>
+			<tbody data-bind="foreach: box">
+				<tr>
+					<td data-bind="text: Code"></td>
+	                <td data-bind="text: formatters.dateFormatter(Date)"></td>
+	                <td data-bind="text: BoxTypeDescription"></td>
+	                <td data-bind="text: CustomerName"></td>
+	                <td data-bind="text: formatters.boxStateFormatterFromValue(BoxState)"></td>
+	                <td data-bind="text: formatters.postBooleanFormatter(DispatchByPost)"></td>
+	                <td data-bind="text: PostalLabelCode"></td>
+	                <td><a data-bind="visible: parseInt(DispatchNumber), attr: { href: siteUrl + 'odpreme/' + DispatchId}"><span data-bind="text: DispatchNumber"></span></a></td>
+	            </tr>
+			</tbody>
+			
+		</table>
+	</div>
+
+	<div>&nbsp</div>
+	<h3>V škatli</h3>
+
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Produkt</th>
+					<th>Od</th>
+					<th>Do</th>
+					<th>Količina</th>
+					<th>% škatle</th>
+				</tr>
+			</thead>
+			<tbody data-bind="foreach: inbox">
+				<tr>
+					<td data-bind="text: ProductTypeName"></td>
+	                <td data-bind="text: PlateNumberFrom"></td>
+	                <td data-bind="text: PlateNumberTo"></td>
+	                <td data-bind="text: ProductCount"></td>
+	                <td data-bind="text: (ProductCount / NumberOfBagsPerBox * 100).toFixed(0) + '%'"></td>
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+
+<script src="{{ constant('APPASSETS') }}/js/viewmodels/vm.boxDetail.js"></script>
+<script> 
+
+var boxDetailViewModel = new boxDetailViewModel();
+
+boxDetailViewModel.init('{{ boxId }}');
+
+</script>
+
+{% endblock %}

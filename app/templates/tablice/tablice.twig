@@ -1,0 +1,84 @@
+{% extends 'layout.twig' %}
+
+{% set title = 'Iskanje uničenih tablic'  %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+	{% include 'sidebar-button.twig' %}
+
+	<ul class="breadcrumb">
+		<li class="active">Uničene tablice</li>
+	</ul>
+	<h2 class="sub-header">Iskanje uničenih tablic</h2>
+	<div>&nbsp</div>
+
+	<form class="navbar-form"> 
+		<input type="text" class="form-control" id="searchValue" placeholder="Vpis registracije" data-bind="value: searchString" autofocus>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button class="btn btn-primary searchButton" data-bind="command: doSearch, activity: doSearch.isExecuting"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+	</form>
+
+	<div>&nbsp</div>
+	<div class="row">
+		<div class="col-sm-8">
+			<p class="searchErrorText"></p>
+			<p class="searchText">Vnesite registracijo.</p>
+		</div>
+		<div class="col-sm-4">
+			<button class="btn btn-primary pull-right poslji" data-bind="command: doSendSelectedPlates, activity: doSendSelectedPlates.isExecuting">pošlji</button>
+		</div>
+	</div>
+	<div class="searchPlateText">
+		<p data-bind="visible: platesCount() > 20">Prikazanih je 20 najbližjih rezultatov iskanja. Če niste uspeli poiskati želenega rezultata, prosimo vnesite bolj podroben iskalni niz.</p>
+
+		<p data-bind="visible: platesCount() <= 0">Ni najdenih rezultatov iskanja, prosimo vnesite pravilen iskalni niz.</p>
+	</div>
+
+	{% include 'preloaderSearch.twig' %}
+
+	<div class="table-responsive" data-bind="visible: platesCount() > 0">
+
+		<table class="table table-striped tableSearch">
+			<thead>
+				<tr>
+					<th>Datum uničenja</th>
+					<th>Paket</th>
+					<th>Naročnik</th>
+					<th>Registracija</th>
+					<th>Prepoznava</th>
+					<th>Pošlji</th>
+				</tr>
+			</thead>
+			<tbody data-bind="foreach: plates">
+				<tr>
+					{# <td data-bind="text: destroyedPackageSerialNumber"></td> #}
+					<td data-bind="text: formatters.dateTimeFormatter(destructionDateTime)"></td>
+					<td data-bind="text: destroyedPackageSerialNumber"></td>
+					<td data-bind="text: customerName"></td>
+					<td data-bind="text: asciiPlateNumber"></td>
+					<td><a data-toggle="modal" data-target="#myModal" class="showPlate" data-bind="click: $root.showPlateDetail">podrobnosti</a></td>
+					<td><input type="checkbox" class="poslji-po-posti" val="poslji-po-posti" data-bind="checked: isSelected, click: $root.selectPlate"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	{% include 'modal.twig' %}
+
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+<script src="{{ constant('APPASSETS') }}/js/viewmodels/common.destroyedPlate.js?ver-1"></script>
+<script src="{{ constant('APPASSETS') }}/js/viewmodels/vm.searchDestroyedPlate.js"></script>
+<script> 
+
+var searchDestroyedPlateViewModel = new searchDestroyedPlateViewModel();
+searchDestroyedPlateViewModel.init();
+
+</script>
+
+{% endblock %}
