@@ -6,12 +6,12 @@
 
 	        	{% if item.dropdown %}
 	        		
-	        		<li data-toggle="collapse" data-target="#iskanje-tablic" style="cursor: pointer"><a>Uničene tablice <span class="glyphicon glyphicon-triangle-bottom glyphicon-font-size"></span></a><div class="slider-right"></div></li>
+	        		<li data-toggle="collapse" data-target="#iskanje-tablic" style="cursor: pointer"><a><span class="glyphicon left-sidebar-sub-icon {{ item.icon }}"></span> Uničene tablice <span class="glyphicon glyphicon-triangle-bottom glyphicon-font-size"></span></a><div class="slider-right"></div></li>
 
 	        		<div id="iskanje-tablic" class="{% if item.dropdown.dropdownidentity == activedropdown %} collapse {% else %} collapse in {% endif %}">	      			
 		        		{% for child in item.childs %}
 		        			<li {% if child.dropdownItem == activepage %} class="active" {% endif %}>
-		        				<a href="{{ constant('APPBASEURL')}}{{ child.dropdownItem}}">{{ child.dropdownItemTitle }}</a>
+		        				<a href="{{ constant('APPBASEURL')}}{{ child.dropdownItem}}"><span class="glyphicon left-sidebar-icon {{ item.icon }}"></span> {{ child.dropdownItemTitle }}</a>
 		        				{% if child.dropdownItem != activepage %} <div class="slider-right"></div> {% endif %}
 		        			</li>		        		
 		        		{% endfor %}
@@ -20,15 +20,15 @@
 	        	{% endif %}
 
 	        	{% if item.page == activepage %}
-	        		<li class="active"><a href="{{ constant('APPBASEURL')}}{{ item.page}}">{{ item.title }}</a></li>
+	        		<li class="active"><a href="{{ constant('APPBASEURL')}}{{ item.page}}"><span class="glyphicon left-sidebar-icon {{ item.icon }}"></span> {{ item.title }}</a></li>
 
 		        {% else %}
 		        	{% if item.page %}
-	        			<li><a href="{{ constant('APPBASEURL')}}{{ item.page}}">{{ item.title }}</a><div class="slider-right"></div></li>
+	        			<li><a href="{{ constant('APPBASEURL')}}{{ item.page}}"><span class="glyphicon left-sidebar-icon {{ item.icon }}"></span> {{ item.title }}</a><div class="slider-right"></div></li>
 	        		{% endif %}
 
 	        		{% if item.link %}
-	        			<li><a href="{{item.link}}" target="_blank">{{ item.title }}</a><div class="slider-right"></div></li>
+	        			<li><a href="{{item.link}}" target="_blank"><span class="glyphicon left-sidebar-icon {{item.icon}}"></span> {{ item.title }}</a><div class="slider-right"></div></li>
 	        		{% endif %}
 
 	        	{% endif %}
