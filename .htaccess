@@ -1,36 +1,49 @@
+# Error document
 ErrorDocument 401 default
+
+# PHP error logging
 php_flag log_errors On
 
+# SetHandler for PHP versions (uncomment if needed)
 <FilesMatch "\.(php4|php5|php3|php2|php|phtml)$">
-# SetHandler application/x-lsphp73
-# SetHandler application/x-lsphp74
+    # SetHandler application/x-lsphp73
+    # SetHandler application/x-lsphp74
 </FilesMatch>
 
-<FilesMatch "\.(html|htm|js|css|php)>
-FileETag None
-Header unset ETag
-Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
-Header set Pragma "no-cache"
-Header set Expires "Wed, 11 Jan 1984 05:00:00 GMT"
+# Cache control and ETag settings
+<FilesMatch "\.(html|htm|js|css|php)$">
+    FileETag None
+    Header unset ETag
+    Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "Wed, 11 Jan 1984 05:00:00 GMT"
 </FilesMatch>
 
-
+# Enable URL rewriting
 RewriteEngine On
-RewriteCond %{HTTP:X-Forwarded-Proto} !=https
-#RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [R=302,L]
+
+# Force HTTPS (uncomment if needed)
+# RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+# RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [R=302,L]
+
+# Route all requests through index.php
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.*)$ index.php/$1 [QSA,L]
+RewriteRule ^ index.php [QSA,L]
 
-# Options -Indexes
+# Disable directory indexing
+Options -Indexes
 
-<FilesMatch "\.(log|twig)">
-  Deny from all
+# Deny access to log and twig files
+<FilesMatch "\.(log|twig)$">
+    Deny from all
 </FilesMatch>
 
-<FilesMatch "index\.php">
-  Allow from all
+# Allow access to index.php
+<FilesMatch "index\.php$">
+    Allow from all
 </FilesMatch>
 
+# PHP session security
 php_value session.cookie_httponly 1
 php_value session.cookie_secure 1

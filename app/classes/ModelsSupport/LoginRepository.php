@@ -491,7 +491,9 @@ class LoginRepository {
     function doUserHavePassword($postParams) {
         $username = $postParams['username'];
         $passUserFromDb = $this->dbConn->fetchSingleRow('crm_user', 'username', $username);
-        // var_dump($passUserFromDb);
+        
+        var_dump($passUserFromDb);
+        
         if(!empty($passUserFromDb)) {
             if(empty($passUserFromDb->password)){
                 return true;

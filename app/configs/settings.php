@@ -72,11 +72,11 @@ return [
 
                 'host'      => 'localhost',
 
-                'database'  => 'kig_veresis',
+                'database'  => 'veresis',
 
-                'username'  => 'kig_veresis',
+                'username'  => 'root',
 
-                'password'  => 'BivK[RLD+?@2',
+                'password'  => '',
 
                 'table_prefix' => 'crm_'
 
@@ -134,7 +134,7 @@ return [
 
                 'lppmApiUrl' => [
 
-                    'baseUrl' => 'https://veresisbe.kig.si/lppmapi/api/',
+                    'baseUrl' => 'http://veresis.test/lppmapi/api/',
 
                     'loginUrl' => 'Account/Login/',
 

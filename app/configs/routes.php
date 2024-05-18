@@ -112,3 +112,18 @@ $app->group('/wsapi', function () {
     $this->post('/updateboxes', 'App\Controllers\WebServiceController:updateBoxes');
     $this->post('/updateboxdetails', 'App\Controllers\WebServiceController:updateBoxDetails');
 });
+
+$app->get('/test-db-connection', function ($request, $response, $args) {
+    try {
+        $dbConn = $this->get('dbConn')->openConnection(); // Use openConnection method to get the PDO instance
+        $stmt = $dbConn->query('SELECT 1');
+        $result = $stmt->fetch();
+        if ($result) {
+            return $response->withJson(['status' => 'success', 'message' => 'Database connection works!']);
+        } else {
+            return $response->withJson(['status' => 'error', 'message' => 'Failed to fetch data from the database.'], 500);
+        }
+    } catch (\PDOException $e) {
+        return $response->withJson(['status' => 'error', 'message' => $e->getMessage()], 500);
+    }
+});

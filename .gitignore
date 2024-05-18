@@ -1,4 +1,3 @@
-vendor/
 /examples/restmsg.txt
 !/app/assets/images/
 /test.php
