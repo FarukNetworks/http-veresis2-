@@ -46,4 +46,6 @@ Options -Indexes
 
 # PHP session security
 php_value session.cookie_httponly 1
-php_value session.cookie_secure 1
+
+# for HTTPS only - 1 - i http - put 0
+php_value session.cookie_secure 0
