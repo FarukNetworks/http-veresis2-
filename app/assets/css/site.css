@@ -198,6 +198,13 @@ p.signin {
   background-color: #2f2f2f;
 }
 
+.nav-user > span {
+
+  margin-right: 5px;
+
+}
+
+
 
 .logo2 {
   position: relative;

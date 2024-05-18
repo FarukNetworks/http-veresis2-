@@ -13,10 +13,10 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     {% if authdata is not empty %}
-                    <li><a><span class="glyphicon glyphicon-user"> </span> {{ authdata.full_name }}</a></li>
+                    <li><a class="nav-user"><span class="glyphicon glyphicon-user"></span> {{ authdata.full_name }}</a></li>
                     {% endif %} 
-                    <li><a href="{{ constant('APPBASEURL') }}menjava-gesla">menjava gesla</a><div class="slider-bottom"></div></li>
-                    <li><a class="logout">odjava</a><div class="slider-bottom"></div></li>
+                    <li><a href="{{ constant('APPBASEURL') }}menjava-gesla"><span class="glyphicon glyphicon-lock"></span> Menjava gesla</a><div class="slider-bottom"></div></li>
+                    <li><a class="logout"><span class="glyphicon glyphicon-log-out"></span> Odjava</a><div class="slider-bottom"></div></li>
                 </ul>
             </div>
         </div>
