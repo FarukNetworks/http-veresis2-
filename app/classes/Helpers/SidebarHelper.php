@@ -25,7 +25,8 @@ class SidebarHelper
 					array('dropdownidentity' => 1, 'icon' => ' glyphicon-search', 'dropdownItem' =>'ponarejene-tablice','dropdownItemTitle' => 'Iskanje ponaredkov')
 				)
 			),
-			array('page' =>'paketi','title' => 'Paketi', 'permissions' => 'orders', 'icon' => ' glyphicon-briefcase')
+			array('page' =>'paketi','title' => 'Paketi', 'permissions' => 'orders', 'icon' => ' glyphicon-briefcase'),
+			array('page' =>'konfigurator','title' => 'Konfigurator', 'permissions' => 'all', 'icon' => ' glyphicon-globe')
 			// array('link' =>'http://kig.si/trgovina/','title' => 'Spletna trgovina', 'permissions' => 'all', 'icon' => 'glyphicon-user')
 		];
 

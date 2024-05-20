@@ -60,6 +60,10 @@ $app->get('/GetFakeDestroyedPlates', 'App\Controllers\DestroyedPlateController:g
 $app->get('/getSearchFakeDestroyedPlates', 'App\Controllers\DestroyedPlateController:getSearchFakeDestroyedPlates');
 $app->post('/sendDestroyedPlates', 'App\Controllers\DestroyedPlateController:sendDestroyedPlates');
 
+$app->get('/konfigurator', 'App\Controllers\ConfiguratorController:indexAction');
+
+
+
 
 
 /**

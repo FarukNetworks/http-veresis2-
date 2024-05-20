@@ -204,3 +204,7 @@ $container["App\Controllers\DestroyedPlateController"] = function ($c) use ($app
     $orderCtrl = new \App\Controllers\DestroyedPlateController($app);
     return $orderCtrl;
 };
+$container["App\Controllers\ConfiguratorController"] = function ($c) use ($app) {
+    $configurator = new \App\Controllers\ConfiguratorController($app);
+    return $configurator;
+};
