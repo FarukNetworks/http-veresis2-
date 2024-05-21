@@ -1,14 +1,13 @@
-$(document).ready(function(){
-    $("div").scroll(function(){
-    	
-	});
+$(document).ready(function () {
+
+
 });
 
 
 // funkcija, spremenljivke
 function AddClassScroll() {
 	$elem = $('.naslov');
-	
+
 	// če je width manjši od 1140
 	if ($(window).width() < 1140) {
 		$elem.addClass('pull-right');
@@ -16,6 +15,6 @@ function AddClassScroll() {
 }
 
 // zazeni funkcijo ob vidnem polju
-$(window).scroll(function(){
-    checkAnimation();
+$(window).scroll(function () {
+	checkAnimation();
 });

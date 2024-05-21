@@ -5,14 +5,79 @@
 
 {% block content %}
 
-<div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1>{{ title }}</h1>
-            </div>
-        </div>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"> 
+	
+	{% include 'preloader.twig' %}
+
+	{% include 'sidebar-button.twig' %}
+
+	<ul class="breadcrumb">
+		<li class="active">Seznam naročil</li>
+		<!--<li class="active">Podrobnosti</li>-->
+	</ul>
+
+    <div class="row">
+        <h3>Konfigurator</h3>
     </div>
+
+    <div class="row">
+
+        <form action="#" id="k_configurator" class="k_configurator_class">
+            <div>
+                <div class="k-user-inputs-holder">
+
+                    <div class="k-input-field">
+                        <label for="prirezRate">Občina:</label>
+                        <select id="k_obcine" class="k_obcine" name="k_obcine">
+                            <option value="grosuplje">Grosuplje</option>
+                            <option value="ljubljana">Ljubljana</option>
+                        </select>
+                    </div>
+
+                    {# Tip tablice #}
+
+                    {# Avto
+                    Avto Ožane
+                    Moped
+                    R4
+                    R4 Ožane
+                    Motor/Traktor #}
+
+                    <div class="k-input-field">
+                        <label for="k_tip_tablice">Tip tablice:</label>
+                        <select id="k_tip_tablice" class="k_tip_tablice" name="k_tip_tablice">
+                            <option value="tip_avto">Avto</option>
+                            <option value="tip_avto_o">Avto ožan</option>
+                            <option value="tip_moped">Moped</option>
+                            <option value="tip_r4">R4</option>
+                            <option value="tip_r4_o">R4 ožan</option>
+                            <option value="tip_traktor">Motor/Traktor</option>
+                        </select>
+                    </div>
+                    
+                    <div class="k-input-field">
+                        <label>Ime na tablici:</label>
+                        <input type="text" id="k_input_text" class="k-input-text" placeholder="Vpišite tukaj ..." />
+                    </div>
+
+                    
+                </div>
+
+                <div class="k-user-submit-holder">
+                    <label class="u-blank-label"></label>
+                    <input type="submit" class="cg_calculate" value="Prikaži"></input>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+
+
+
+
+
+
 </div>
 
 {% endblock %}
