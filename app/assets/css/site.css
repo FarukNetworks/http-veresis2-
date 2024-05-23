@@ -1013,3 +1013,100 @@ p.signin {
     flex-direction: column;
   }
 }
+
+/* tablice */
+.tablice-holder {
+  width: 100%;
+  font-size: 1vw; /* Changed from px to vw */
+  max-height: 290px;
+}
+
+.tab-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1em;
+  align-items: center;
+  max-height: 290px;
+  height: 290px;
+  margin-left: 8%;
+}
+
+.tablica-avto {
+  background: url('../img/tablice-ozadja/AVTO-tablica.jpg') no-repeat;
+  aspect-ratio: 4.19/1;
+  background-size: cover;
+}
+
+/* Importing otf font */
+@font-face {
+  font-family: 'AVTO-OZ';
+  src: url('../fonts/AVTO-OZ.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MOPED';
+  src: url('../fonts/MOPED.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'R4';
+  src: url('../fonts/R4.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'R4-OZ';
+  src: url('../fonts/R4-OZ.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.avto-font {
+  font-family: 'R4';
+}
+
+.avto-font .tab-font {
+  font-size: 13vw; /* Changed from em to vw */
+  line-height: 1;
+}
+
+.avto-font .tab-minus {
+  font-size: 13vw; /* Changed from em to vw */
+  line-height: 1;
+}
+
+.tab-grb-holder {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  gap: 0.3em;
+  align-items: center;
+  margin-top: 1%;
+}
+
+.tab-okr {
+}
+
+.tab-grb img {
+  width: 10vw; /* Changed from px to vw */
+  height: 10vw; /* Changed from px to vw */
+}
+
+.tab-text-holder {
+  margin-top: 1%;
+}
+
+.tab-text-1 {
+}
+
+.tab-minus {
+}
+
+.tab-text-2 {
+}
