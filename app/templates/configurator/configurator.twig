@@ -27,21 +27,9 @@
                 <div class="k-user-inputs-holder">
 
                     <div class="k-input-field">
-                        <label for="prirezRate">Občina:</label>
-                        <select id="k_obcine" class="k_obcine" name="k_obcine">
-                            <option value="grosuplje">Grosuplje</option>
-                            <option value="ljubljana">Ljubljana</option>
-                        </select>
+                        <label for="k_obcine">Občina:</label>
+                        <select id="k_obcine" class="k_obcine" name="k_obcine"></select>
                     </div>
-
-                    {# Tip tablice #}
-
-                    {# Avto
-                    Avto Ožane
-                    Moped
-                    R4
-                    R4 Ožane
-                    Motor/Traktor #}
 
                     <div class="k-input-field">
                         <label for="k_tip_tablice">Tip tablice:</label>
@@ -57,10 +45,14 @@
                     
                     <div class="k-input-field">
                         <label>Ime na tablici:</label>
-                        <input type="text" id="k_input_text" class="k-input-text" placeholder="Vpišite tukaj ..." />
+                        <input type="text" id="k_input_text" max="7" min="7" class="k-input-text" value="1234553" placeholder="Vpišite tukaj ..." />
                     </div>
 
-                    
+                    <div class="k-input-field k-sub-input">
+                        <label for="k_vanity">Vanity:</label>
+                        <input type="checkbox" id="k_vanity" class="k_vanity" name="k_vanity" value="1" />
+                    </div>
+
                 </div>
 
                 <div class="k-user-submit-holder">

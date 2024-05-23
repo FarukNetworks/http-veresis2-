@@ -1015,28 +1015,6 @@ p.signin {
 }
 
 /* tablice */
-.tablice-holder {
-  width: 100%;
-  font-size: 1vw; /* Changed from px to vw */
-  max-height: 290px;
-}
-
-.tab-wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 1em;
-  align-items: center;
-  max-height: 290px;
-  height: 290px;
-  margin-left: 8%;
-}
-
-.tablica-avto {
-  background: url('../img/tablice-ozadja/AVTO-tablica.jpg') no-repeat;
-  aspect-ratio: 4.19/1;
-  background-size: cover;
-}
 
 /* Importing otf font */
 @font-face {
@@ -1067,6 +1045,29 @@ p.signin {
   font-style: normal;
 }
 
+.tablice-holder {
+  width: 100%;
+  font-size: 1vw; /* Changed from px to vw */
+  max-height: 290px;
+}
+
+.tab-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1em;
+  align-items: center;
+  max-height: 290px;
+  height: 290px;
+  margin-left: 8%;
+}
+
+.tablica-avto {
+  background: url('../img/tablice-ozadja/AVTO-tablica.jpg') no-repeat;
+  aspect-ratio: 4.19/1;
+  background-size: cover;
+}
+
 .avto-font {
   font-family: 'R4';
 }
@@ -1088,6 +1089,34 @@ p.signin {
   gap: 0.3em;
   align-items: center;
   margin-top: 1%;
+}
+
+.k-input-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  gap: 0.3em;
+  align-items: center;
+}
+
+.k-sub-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 0em;
+}
+
+.k-input-field {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 0;
+  align-items: start;
+}
+
+.k-input-field input, .k-input-field select {
+  padding: 10px 20px;
+  border-radius: 4px;
 }
 
 .tab-okr {
