@@ -2,6 +2,23 @@ $(document).ready(function () {
 	
 	console.log('ready');
 
+	// toastr setting to be very fast
+
+	toastr.options = {
+		"closeButton": false,
+		"debug": false,
+		"newestOnTop": true,
+		"progressBar": true,
+		"positionClass": "toast-top-right",
+		"preventDuplicates": true,
+		"onclick": null,
+		"showDuration": "300",
+		"hideDuration": "100",
+		"timeOut": "50"
+	};
+
+
+
 	// 	<form action="#" id="k_configurator" class="k_configurator_class">
 	// 	<div>
 	// 		<div class="k-user-inputs-holder">
@@ -336,7 +353,64 @@ $(document).ready(function () {
 		$('#k_obcine').append('<option abbr="'+ value.abbr +'" value="' + value.value + '">' + value.name + ' (' + value.abbr + ')' + '</option>');
 	});
 
-	// on change k_vanity to true put a minus after 3 character of k_input
+	function validateInput(input) {
+		// Check if input contains at least one letter
+		if (!/[a-zA-Z]/.test(input)) {
+			return false;
+		}
+	
+		// Check if input contains at most one dash and not at the beginning or the end
+		if ((input.indexOf('-') !== input.lastIndexOf('-')) || input.startsWith('-') || input.endsWith('-')) {
+			return false;
+		}
+	
+		return true;
+	}
+
+	function validateInput(input) {
+		// Check if input contains at least one letter
+		if (!/[a-zA-Z]/.test(input)) {
+			return false;
+		}
+	
+		// Check if input contains at most one dash and not at the beginning or the end
+		if ((input.indexOf('-') !== input.lastIndexOf('-')) || input.startsWith('-') || input.endsWith('-')) {
+			return false;
+		}
+	
+		return true;
+	}
+
+	// on change of k_input and if k_vanity to true put a minus after 3 character of k_input
+
+	$('#k_input_text').on('input change', function () {
+		var input = $(this).val();
+	
+		// if vanity is false put a minus after 3 character of k_input
+		// if vanity is true minus is not needed
+		if (!$('#k_vanity').is(':checked')) {
+			if (input.length === 3) {
+				input += '-';
+			}
+		}
+	
+		$(this).val(input);
+	
+		if (!validateInput(input)) {
+			toastr.error('Vnesite veljavno registrsko oznako!');
+		} else {
+			toastr.success('Registrska oznaka je veljavna!');
+		}
+	});
+
+	// if vanity is check or uncheck always clear input k_input_text
+
+	$('#k_vanity').on('change', function () {
+		$('#k_input_text').val('');
+	});
+
+
+
 
 	$('#k_configurator').on('submit', function (e) {
 		// Prevent default form submission in both cases
@@ -366,7 +440,7 @@ $(document).ready(function () {
 			var k_ime_tablice = $('#k_input_text').val();
 			var k_obcine_abbr = $('#k_obcine option:selected').text().split(' ')[1].slice(1, -1);
 			var k_vanity = $('#k_vanity').val();
-			var k_input = $('#k_input_text').val();
+			var k_input = $('#k_input_text').val().toUpperCase();
 
 			// console log values
 			console.log(k_obcine);
@@ -379,11 +453,8 @@ $(document).ready(function () {
 			// input abbr to the span in tab-okr class
 			$('.tab-okr span').text(k_obcine_abbr);
 
-			// if k_vanity is false put a minus after 3 character of k_input
-			if (k_vanity === 'false') {
-				$('.tab-okr span').text(k_obcine_abbr + '-' + k_input.slice(0, 3));
-			}
-
+			// input is put to tab-text-1
+			$('.tab-text-1').text(k_input.toUpperCase());
 
 
 

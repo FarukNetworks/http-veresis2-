@@ -1112,6 +1112,7 @@ p.signin {
   justify-content: start;
   gap: 0;
   align-items: start;
+  
 }
 
 .k-input-field input, .k-input-field select {
@@ -1119,12 +1120,20 @@ p.signin {
   border-radius: 4px;
 }
 
+.k-input-text {
+  text-transform: uppercase;
+}
+
 .tab-okr {
 }
 
+.k-info-title h4 {
+  color: #2378C8;
+}
+
 .tab-grb img {
-  width: 10vw; /* Changed from px to vw */
-  height: 10vw; /* Changed from px to vw */
+  width: 9vw; /* Changed from px to vw */
+  height: 9vw; /* Changed from px to vw */
 }
 
 .tab-text-holder {

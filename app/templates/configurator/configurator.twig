@@ -45,12 +45,23 @@
                     
                     <div class="k-input-field">
                         <label>Ime na tablici:</label>
-                        <input type="text" id="k_input_text" max="7" min="7" class="k-input-text" value="1234553" placeholder="Vpišite tukaj ..." />
+                        <input type="text" id="k_input_text" minlength="7" maxlength="7" class="k-input-text" value="1234553" placeholder="Vpišite tukaj ..." />
                     </div>
 
                     <div class="k-input-field k-sub-input">
-                        <label for="k_vanity">Vanity:</label>
-                        <input type="checkbox" id="k_vanity" class="k_vanity" name="k_vanity" value="1" />
+                        <label for="k_vanity" title="Kombinacija znakov mora vsebovati najmanj eno črko, izbrani del označbe pa lahko vsebuje največ en pomišljaj, vendar ne na začetku ali koncu oznake. Izbrati je mogoče le tako kombinacijo znakov, ki jo omogoča prostor na tablici. Izbrani del označbe ne sme vsebovati kratic državnih organov, tujih predstavništev in mednarodnih organizacij. Žaljivi, vulgarni ali drugi neprimerni izrazi prav tako niso dovoljeni.
+
+Cena para avtomobilskih registrskih tablic (520 x 120 mm) z oznako po izbiri je 128,86 €.
+
+Proizvajalec tablice dobavi najkasneje v roku 14 dni po prejemu naročila, kar upoštevajte ob naročilu, saj registracija vozila brez tablic ni možna.
+
+Tablice z vsebino po izbiri so vezane na osebo, ki jih je naročila, vseeno pa je prenos na drugo osebo možen s spodnjim obrazcem.">Vanity *: 
+                        
+                        {# info icon #}
+        
+
+                        </label>
+                        <input type="checkbox" id="k_vanity" class="k_vanity" name="k_vanity" value="0" />
                     </div>
 
                 </div>
@@ -89,13 +100,35 @@
 
     </div>
 
+    <div class="k-info-section">
+
+        <div class="k-info-holder">
+            <div class="k-info-title">
+                <h4>Registrske tablice po izbiri *</h4>
+            </div>
+            <div class="k-info-content">
+                <p>
+                    Lastnik motornega vozila se lahko odloči za registrske tablice z oznako po izbiri.
+                </p>
+                <p>
+                    Kombinacija znakov mora vsebovati najmanj eno črko, izbrani del označbe pa lahko vsebuje največ en pomišljaj, vendar ne na začetku ali koncu oznake. Izbrati je mogoče le tako kombinacijo znakov, ki jo omogoča prostor na tablici. Izbrani del označbe ne sme vsebovati kratic državnih organov, tujih predstavništev in mednarodnih organizacij. Žaljivi, vulgarni ali drugi neprimerni izrazi prav tako niso dovoljeni.
+                </p>
+                <p>
+                    Cena para avtomobilskih registrskih tablic (520 x 120 mm) z oznako po izbiri je 128,86 €.
+                </p>
+                <p>
+                    Proizvajalec tablice dobavi najkasneje v roku 14 dni po prejemu naročila, kar upoštevajte ob naročilu, saj registracija vozila brez tablic ni možna.
+                </p>
+                <p>
+                    Tablice z vsebino po izbiri so vezane na osebo, ki jih je naročila, vseeno pa je prenos na drugo osebo možen s spodnjim obrazcem.
+                </p>
+
+            </div>
+        </div>
+
+    </div>
 
 
-
-
-
-
-</div>
 
 {% endblock %}
 
