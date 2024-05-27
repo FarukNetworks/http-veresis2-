@@ -319,32 +319,33 @@ $(document).ready(function () {
 		{
 			"value": "tip_avto",
 			"img": "avto.jpg",
-			"font": "avto"
+			"class": "avto-font"
 		},
 		{
 			"value": "tip_avto_o",
-			"img": "avto_o.jpg",
-			"font": "AVTO-OZ.otf"
+			"img": "avto.jpg",
+			"class": "avto-oz"
 		},
 		{
 			"value": "tip_moped",
 			"img": "moped.jpg",
-			"font": "MOTOTRAKTOR.otf"
+			"class": "traktor-font"
 
 		},
 		{
 			"value": "tip_r4",
-			"img": "r4.jpg"
+			"img": "r4.jpg",
+			"class": "r4-font"
 		},
 		{
 			"value": "tip_r4_o",
 			"img": "r4_o.jpg",
-			"font": "R4-OZ.otf"
+			"class": "r4-oz"
 		},
 		{
 			"value": "tip_traktor",
 			"img": "traktor.jpg",
-			"font": "MOTOTRAKTOR.otf"
+			"class": "traktor-font"
 		}
 	];
 
@@ -415,6 +416,12 @@ $(document).ready(function () {
 	$('#k_configurator').on('submit', function (e) {
 		// Prevent default form submission in both cases
 		e.preventDefault();
+
+		function getValueFromArray(array, value) {
+			return array.find(function (element) {
+				return element.value === value;
+			});
+		}
 	
 		var isValid = true;
 
@@ -436,16 +443,22 @@ $(document).ready(function () {
 			// get values from form fields and store them in variables
 
 			var k_obcine = $('#k_obcine').val();
-			var k_tip_tablice = $('#k_tip_tablice').val();
+			var k_tip_value = $('#k_tip_tablice').val();
 			var k_ime_tablice = $('#k_input_text').val();
 			var k_obcine_abbr = $('#k_obcine option:selected').text().split(' ')[1].slice(1, -1);
 			var k_vanity = $('#k_vanity').val();
 			var k_input = $('#k_input_text').val().toUpperCase();
+			var k_tip_class = getValueFromArray(k_tip_tablice, k_tip_value).class;
+
 
 			// console log values
 			console.log(k_obcine);
-			console.log(k_tip_tablice);
+			console.log(k_tip_value);
 			console.log(k_ime_tablice);
+
+
+	
+
 
 			// change the name of the url in tab-grb class - images are located in 2 folder above and img/grbi and value
 			$('.tab-grb img').attr('src', 'app/assets/img/grbi/' + k_obcine + '.png');
@@ -455,6 +468,10 @@ $(document).ready(function () {
 
 			// input is put to tab-text-1
 			$('.tab-text-1').text(k_input.toUpperCase());
+
+			// remove default class and add class from k_tip_class
+			$('.tab-wrapper').removeClass('avto-font traktor-font r4-font r4-oz');
+			$('.tab-wrapper').addClass(k_tip_class);
 
 
 

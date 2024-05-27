@@ -1055,31 +1055,45 @@ p.signin {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 1em;
+  
   align-items: center;
-  max-height: 290px;
-  height: 290px;
-  margin-left: 8%;
+  max-height: 240px;
+  height: 240px;
+  margin-left: 49px;
+  padding-top: 20px;
+  width: 1000px;
+
 }
 
 .tablica-avto {
   background: url('../img/tablice-ozadja/AVTO-tablica.jpg') no-repeat;
   aspect-ratio: 4.19/1;
-  background-size: cover;
+  background-size: contain;
+  width: 1000px;
+  height: 240px;
 }
 
 .avto-font {
   font-family: 'R4';
 }
+.avto-oz {
+  font-family: 'R4-OZ';
+}
+.traktor-font {
+  font-family: 'MOPED';
+}
+.r4-oz {
+  font-family: 'R4-OZ';
+}
 
 .avto-font .tab-font {
-  font-size: 13vw; /* Changed from em to vw */
-  line-height: 1;
+  font-size: 172px; /* Changed from em to vw */
+  line-height: 0;
 }
 
 .avto-font .tab-minus {
   font-size: 13vw; /* Changed from em to vw */
-  line-height: 1;
+  line-height: 0;
 }
 
 .tab-grb-holder {
@@ -1088,7 +1102,6 @@ p.signin {
   justify-content: start;
   gap: 0.3em;
   align-items: center;
-  margin-top: 1%;
 }
 
 .k-input-group {
@@ -1137,7 +1150,9 @@ p.signin {
 }
 
 .tab-text-holder {
-  margin-top: 1%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .tab-text-1 {
