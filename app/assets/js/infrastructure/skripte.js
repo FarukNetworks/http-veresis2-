@@ -503,7 +503,7 @@ $(document).ready(function () {
 			$('.tab-text-1').text(k_input.toUpperCase());
 
 			// remove default class and add class from k_tip_class
-			$('.tab-wrapper').removeClass('avto-font avto-oz traktor-font r4-font r4-oz');
+			$('.tab-wrapper').removeClass('avto-font avto-oz traktor-font moped-font r4-font r4-oz');
 			$('.tab-wrapper').addClass(k_tip_class);
 
 			// switch id based on k_holder_tablica
