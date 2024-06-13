@@ -274,45 +274,159 @@ $(document).ready(function () {
 	// ];
 
 	const k_obcine_list = [
-		{ "value": "ajdovscina", "name": "ajdovščina", "img": "ajdovscina.png", "abbr": "GO" },
-		{ "value": "brezice", "name": "brežice", "img": "brezice.png", "abbr": "KK" },
-		{ "value": "crna_na_koroskem", "name": "črna na koroškem", "img": "crna_na_koroskem.png", "abbr": "SG" },
-		{ "value": "crnomelj", "name": "črnomelj", "img": "crnomelj.png", "abbr": "NM" },
-		{ "value": "dravograd", "name": "dravograd", "img": "dravograd.png", "abbr": "SG" },
-		{ "value": "domzale", "name": "domžale", "img": "domzale.png", "abbr": "LJ" },
-		{ "value": "gornja_radgona", "name": "gornja radgona", "img": "gornja_radgona.png", "abbr": "MS" },
-		{ "value": "grosuplje", "name": "grosuplje", "img": "grosuplje.png", "abbr": "LJ" },
-		{ "value": "idrija", "name": "idrija", "img": "idrija.png", "abbr": "GO" },
-		{ "value": "jesenice", "name": "jesenice", "img": "jesenice.png", "abbr": "KR" },
-		{ "value": "kamnik", "name": "kamnik", "img": "kamnik.png", "abbr": "LJ" },
-		{ "value": "koper", "name": "koper", "img": "koper.png", "abbr": "KP" },
-		{ "value": "kranj", "name": "kranj", "img": "kranj.png", "abbr": "KR" },
-		{ "value": "krsko", "name": "krško", "img": "krsko.png", "abbr": "KK" },
-		{ "value": "lasko", "name": "laško", "img": "lasko.png", "abbr": "CE" },
-		{ "value": "ljubljana", "name": "ljubljana", "img": "ljubljana.png", "abbr": "LJ" },
-		{ "value": "ljutomer", "name": "ljutomer", "img": "ljutomer.png", "abbr": "MS" },
-		{ "value": "maribor", "name": "maribor", "img": "maribor.png", "abbr": "MB" },
-		{ "value": "metlika", "name": "metlika", "img": "metlika.png", "abbr": "NM" },
-		{ "value": "mirska_sobota", "name": "murska sobota", "img": "murska_sobota.png", "abbr": "MS" },
-		{ "value": "nova_gorica", "name": "nova gorica", "img": "nova_gorica.png", "abbr": "GO" },
-		{ "value": "novo_mesto", "name": "novo mesto", "img": "novo_mesto.png", "abbr": "NM" },
-		{ "value": "ormoz", "name": "ormož", "img": "ormoz.png", "abbr": "MB" },
-		{ "value": "pesnica", "name": "pesnica", "img": "pesnica.png", "abbr": "MB" },
-		{ "value": "piran", "name": "piran", "img": "piran.png", "abbr": "KP" },
-		{ "value": "postojna", "name": "postojna", "img": "postojna.png", "abbr": "PO" },
-		{ "value": "ptuj", "name": "ptuj", "img": "ptuj.png", "abbr": "MB" },
-		{ "value": "radlje_ob_dravi", "name": "radlje ob dravi", "img": "radlje_ob_dravi.png", "abbr": "SG" },
-		{ "value": "radovljica", "name": "radovljica", "img": "radovljica.png", "abbr": "KR" },
-		{ "value": "ravne_na_koroskem", "name": "ravne na koroškem", "img": "ravne_na_koroskem.png", "abbr": "SG" },
-		{ "value": "sevnica", "name": "sevnica", "img": "sevnica.png", "abbr": "KK" },
-		{ "value": "sezana", "name": "sežana", "img": "sezana.png", "abbr": "KP" },
-		{ "value": "slovenj_gradec", "name": "slovenj gradec", "img": "slovenj_gradec.png", "abbr": "SG" },
-		{ "value": "slovenska_bistrica", "name": "slovenska bistrica", "img": "slovenska_bistrica.png", "abbr": "MB" },
-		{ "value": "sentjur", "name": "šentjur", "img": "sentjur.png", "abbr": "CE" },
-		{ "value": "skofja_loka", "name": "škofja loka", "img": "skofja_loka.png", "abbr": "KR" },
-		{ "value": "velenje", "name": "velenje", "img": "velenje.png", "abbr": "CE" },
-		{ "value": "zagorje_ob_savi", "name": "zagorje ob savi", "img": "zagorje_ob_savi.png", "abbr": "LJ" },
-		{ "value": "zelezniki", "name": "železniki", "img": "zelezniki.png", "abbr": "zl" }
+
+		// abbr: "LJ", cerknica, domzale, hrastnik, kočevje, ribnica, trbovlje, zagorje, litija, grosuplje, kamnik, ljubljana, logatec, vrhnika
+		{ "value": "cerknica", "name": "cerknica", "img": "cerknica@2x.png", "abbr": "LJ" },
+		{ "value": "domzale", "name": "domžale", "img": "domzale@2x.png", "abbr": "LJ" },
+		{ "value": "grosuplje", "name": "grosuplje", "img": "grosuplje@2x.png", "abbr": "LJ" },
+		{ "value": "kamnik", "name": "kamnik", "img": "kamnik@2x.png", "abbr": "LJ" },
+		{ "value": "ljubljana", "name": "ljubljana", "img": "ljubljana@2x.png", "abbr": "LJ" },
+		{ "value": "logatec", "name": "logatec", "img": "logatec@2x.png", "abbr": "LJ" },
+		{ "value": "vrhnika", "name": "vrhnika", "img": "vrhnika@2x.png", "abbr": "LJ" },
+		{ "value": "hrastnik", "name": "hrastnik", "img": "hrastnik@2x.png", "abbr": "LJ" },
+		{ "value": "kocevje", "name": "kočevje", "img": "kocevje@2x.png", "abbr": "LJ" },
+		{ "value": "litija", "name": "litija", "img": "litija@2x.png", "abbr": "LJ" },
+		{ "value": "ribnica", "name": "ribnica", "img": "ribnica@2x.png", "abbr": "LJ" },
+		{ "value": "trbovlje", "name": "trbovlje", "img": "trbovlje@2x.png", "abbr": "LJ" },
+		{ "value": "zagorje", "name": "zagorje", "img": "zagorje@2x.png", "abbr": "LJ" },
+
+		// ptuj, lenart, maribor, ormož, ruše, slovenska bistrica, pesnica
+
+		{ "value": "maribor", "name": "maribor", "img": "maribor@2x.png", "abbr": "MB" },
+		{ "value": "ormoz", "name": "ormož", "img": "ormoz@2x.png", "abbr": "MB" },
+		{ "value": "pesnica", "name": "pesnica", "img": "pesnica@2x.png", "abbr": "MB" },
+		{ "value": "ptuj", "name": "ptuj", "img": "ptuj@2x.png", "abbr": "MB" },
+		{ "value": "lenart", "name": "lenart", "img": "lenart@2x.png", "abbr": "MB" },
+		{ "value": "ruše", "name": "ruše", "img": "ruse@2x.png", "abbr": "MB" },
+		{ "value": "slovenska_bistrica", "name": "slovenska bistrica", "img": "slovenska_bistrica@2x.png", "abbr": "MB" },
+
+		// GO
+		// ajdovščina, idrija, nova gorica, tolmin
+
+		{ "value": "ajdovscina", "name": "ajdovščina", "img": "ajdovscina@2x.png", "abbr": "GO" },
+		{ "value": "idrija", "name": "idrija", "img": "idrija@2x.png", "abbr": "GO" },
+		{ "value": "nova_gorica", "name": "nova gorica", "img": "nova_gorica@2x.png", "abbr": "GO" },
+		{ "value": "tolmin", "name": "tolmin", "img": "tolmin@2x.png", "abbr": "GO" },
+
+		// CE
+		// celje, laško, mozirje, slovenske konjice, velenje, žalec, Šentjur pri Celju, Šmarje pri Jelšah,
+		
+		{ "value": "celje", "name": "celje", "img": "celje@2x.png", "abbr": "CE" },
+		{ "value": "lasko", "name": "laško", "img": "lasko@2x.png", "abbr": "CE" },
+		{ "value": "mozirje", "name": "mozirje", "img": "mozirje@2x.png", "abbr": "CE" },
+		{ "value": "slovenske_konjice", "name": "slovenske konjice", "img": "slovenske_konjice@2x.png", "abbr": "CE" },
+		{ "value": "velenje", "name": "velenje", "img": "velenje@2x.png", "abbr": "CE" },
+		{ "value": "zalec", "name": "žalec", "img": "zalec@2x.png", "abbr": "CE" },
+		{ "value": "sentjur", "name": "šentjur", "img": "sentjur@2x.png", "abbr": "CE" },
+		{ "value": "smarje_pri_jelsah", "name": "šmarje pri jelšah", "img": "smarje_pri_jelsah@2x.png", "abbr": "CE" },
+		
+		// PO
+		// postojna
+
+		{ "value": "postojna", "name": "postojna", "img": "postojna@2x.png", "abbr": "PO" },
+
+		// KR
+
+		// jesenice, kranj, radovljica, škofja loka, tržič
+
+		{ "value": "jesenice", "name": "jesenice", "img": "jesenice@2x.png", "abbr": "KR" },
+		{ "value": "kranj", "name": "kranj", "img": "kranj@2x.png", "abbr": "KR" },
+		{ "value": "radovljica", "name": "radovljica", "img": "radovljica@2x.png", "abbr": "KR" },
+		{ "value": "skofja_loka", "name": "škofja loka", "img": "skofja_loka@2x.png", "abbr": "KR" },
+		{ "value": "trzic", "name": "tržič", "img": "trzic@2x.png", "abbr": "KR" },
+
+		// PO
+
+		// postojna
+
+		{ "value": "postojna", "name": "postojna", "img": "postojna@2x.png", "abbr": "PO" },
+
+		// MS
+
+		// gornja radgona, ljutomer, murska sobota, lendava
+
+		{ "value": "gornja_radgona", "name": "gornja radgona", "img": "gornja_radgona@2x.png", "abbr": "MS" },
+		{ "value": "ljutomer", "name": "ljutomer", "img": "ljutomer@2x.png", "abbr": "MS" },
+		{ "value": "murska_sobota", "name": "murska sobota", "img": "murska_sobota@2x.png", "abbr": "MS" },
+		{ "value": "lendava", "name": "lendava", "img": "lendava@2x.png", "abbr": "MS" },
+
+		// KP
+
+		// koper, piran, izola, ilirska bistrica, sežana,
+
+		{ "value": "koper", "name": "koper", "img": "koper@2x.png", "abbr": "KP" },
+		{ "value": "piran", "name": "piran", "img": "piran@2x.png", "abbr": "KP" },
+		{ "value": "izola", "name": "izola", "img": "izola@2x.png", "abbr": "KP" },
+		{ "value": "ilirska_bistrica", "name": "ilirska bistrica", "img": "ilirska_bistrica@2x.png", "abbr": "KP" },
+		{ "value": "sezana", "name": "sežana", "img": "sezana@2x.png", "abbr": "KP" },
+
+		// SG
+
+		// dravograd, radlje ob dravi, ravne na koroškem, slovenj gradec
+
+		{ "value": "dravograd", "name": "dravograd", "img": "dravograd@2x.png", "abbr": "SG" },
+		{ "value": "radlje_ob_dravi", "name": "radlje ob dravi", "img": "radlje_ob_dravi@2x.png", "abbr": "SG" },
+		{ "value": "ravne_na_koroskem", "name": "ravne na koroškem", "img": "ravne_na_koroskem@2x.png", "abbr": "SG" },
+		{ "value": "slovenj_gradec", "name": "slovenj gradec", "img": "slovenj_gradec@2x.png", "abbr": "SG" },
+
+		// NM
+
+		// novo mesto, metlika, črnomelj, trebnje
+		
+		{ "value": "novo_mesto", "name": "novo mesto", "img": "novo_mesto@2x.png", "abbr": "NM" },
+		{ "value": "metlika", "name": "metlika", "img": "metlika@2x.png", "abbr": "NM" },
+		{ "value": "crnomelj", "name": "črnomelj", "img": "crnomelj@2x.png", "abbr": "NM" },
+		{ "value": "trebnje", "name": "trebnje", "img": "trebnje@2x.png", "abbr": "NM" },
+
+		// KK 
+
+		// krško, brežice, sevnica, krško
+
+		{ "value": "krsko", "name": "krško", "img": "krsko@2x.png", "abbr": "KK" },
+		{ "value": "brezice", "name": "brežice", "img": "brezice@2x.png", "abbr": "KK" },
+		{ "value": "sevnica", "name": "sevnica", "img": "sevnica@2x.png", "abbr": "KK" },
+		{ "value": "krsko", "name": "krško", "img": "krsko@2x.png", "abbr": "KK" },
+
+
+		// { "value": "ajdovscina", "name": "ajdovščina", "img": "ajdovscina.png", "abbr": "GO" },
+		// { "value": "brezice", "name": "brežice", "img": "brezice.png", "abbr": "KK" },
+		// { "value": "crna_na_koroskem", "name": "črna na koroškem", "img": "crna_na_koroskem.png", "abbr": "SG" },
+		// { "value": "crnomelj", "name": "črnomelj", "img": "crnomelj.png", "abbr": "NM" },
+		// { "value": "dravograd", "name": "dravograd", "img": "dravograd.png", "abbr": "SG" },
+		// { "value": "domzale", "name": "domžale", "img": "domzale.png", "abbr": "LJ" },
+		// { "value": "gornja_radgona", "name": "gornja radgona", "img": "gornja_radgona.png", "abbr": "MS" },
+		// { "value": "grosuplje", "name": "grosuplje", "img": "grosuplje.png", "abbr": "LJ" },
+		// { "value": "idrija", "name": "idrija", "img": "idrija.png", "abbr": "GO" },
+		// { "value": "jesenice", "name": "jesenice", "img": "jesenice.png", "abbr": "KR" },
+		// { "value": "kamnik", "name": "kamnik", "img": "kamnik.png", "abbr": "LJ" },
+		// { "value": "koper", "name": "koper", "img": "koper.png", "abbr": "KP" },
+		// { "value": "kranj", "name": "kranj", "img": "kranj.png", "abbr": "KR" },
+		// { "value": "krsko", "name": "krško", "img": "krsko.png", "abbr": "KK" },
+		// { "value": "lasko", "name": "laško", "img": "lasko.png", "abbr": "CE" },
+		// { "value": "ljubljana", "name": "ljubljana", "img": "ljubljana.png", "abbr": "LJ" },
+		// { "value": "ljutomer", "name": "ljutomer", "img": "ljutomer.png", "abbr": "MS" },
+		// 
+		// { "value": "metlika", "name": "metlika", "img": "metlika.png", "abbr": "NM" },
+		// { "value": "mirska_sobota", "name": "murska sobota", "img": "murska_sobota.png", "abbr": "MS" },
+		// { "value": "nova_gorica", "name": "nova gorica", "img": "nova_gorica.png", "abbr": "GO" },
+		// { "value": "novo_mesto", "name": "novo mesto", "img": "novo_mesto.png", "abbr": "NM" },
+		// { "value": "ormoz", "name": "ormož", "img": "ormoz.png", "abbr": "MB" },
+		// { "value": "pesnica", "name": "pesnica", "img": "pesnica.png", "abbr": "MB" },
+		// { "value": "piran", "name": "piran", "img": "piran.png", "abbr": "KP" },
+		// { "value": "postojna", "name": "postojna", "img": "postojna.png", "abbr": "PO" },
+		// { "value": "ptuj", "name": "ptuj", "img": "ptuj.png", "abbr": "MB" },
+		// { "value": "radlje_ob_dravi", "name": "radlje ob dravi", "img": "radlje_ob_dravi.png", "abbr": "SG" },
+		// { "value": "radovljica", "name": "radovljica", "img": "radovljica.png", "abbr": "KR" },
+		// { "value": "ravne_na_koroskem", "name": "ravne na koroškem", "img": "ravne_na_koroskem.png", "abbr": "SG" },
+		// { "value": "sevnica", "name": "sevnica", "img": "sevnica.png", "abbr": "KK" },
+		// { "value": "sezana", "name": "sežana", "img": "sezana.png", "abbr": "KP" },
+		// { "value": "slovenj_gradec", "name": "slovenj gradec", "img": "slovenj_gradec.png", "abbr": "SG" },
+		// { "value": "slovenska_bistrica", "name": "slovenska bistrica", "img": "slovenska_bistrica.png", "abbr": "MB" },
+		// { "value": "sentjur", "name": "šentjur", "img": "sentjur.png", "abbr": "CE" },
+		// { "value": "skofja_loka", "name": "škofja loka", "img": "skofja_loka.png", "abbr": "KR" },
+		// { "value": "velenje", "name": "velenje", "img": "velenje.png", "abbr": "CE" },
+		// { "value": "zagorje_ob_savi", "name": "zagorje ob savi", "img": "zagorje_ob_savi.png", "abbr": "LJ" },
+		// { "value": "zelezniki", "name": "železniki", "img": "zelezniki.png", "abbr": "ZL" }
 	];
 
 	const k_tip_tablice = [
@@ -409,7 +523,7 @@ $(document).ready(function () {
 		var k_tip_value = $('#k_tip_tablice').val();
 
 		if (k_tip_value === 'tip_avto' || k_tip_value === 'tip_avto_o') {
-			$('.k-input-text').val('ABC-122');
+			$('.k-input-text').val('12-EAV');
 		} else if (k_tip_value === 'tip_traktor') {
 			$('.k-input-text').val('AB-12');
 		} else if (k_tip_value === 'tip_moped') {
@@ -420,7 +534,6 @@ $(document).ready(function () {
 			$('.k-input-text').val('ABC-122');
 		}
 
-		
 	});
 
 
@@ -429,9 +542,6 @@ $(document).ready(function () {
 	$('#k_vanity').on('change', function () {
 		$('#k_input_text').val('');
 	});
-
-
-
 
 	$('#k_configurator').on('submit', function (e) {
 		// Prevent default form submission in both cases
@@ -461,11 +571,12 @@ $(document).ready(function () {
 			// get values from form fields and store them in variables
 
 			var k_obcine = $('#k_obcine').val();
+			var k_grb_img = getValueFromArray(k_obcine_list, k_obcine).img;
 			var k_tip_value = $('#k_tip_tablice').val();
 			var k_ime_tablice = $('#k_input_text').val();
 			
 
-			var k_obcine_abbr = $('#k_obcine option:selected').text().split(' ')[1].slice(1, -1);
+			var k_obcine_abbr = $('#k_obcine option:selected').attr('abbr');
 			var k_vanity = $('#k_vanity').val();
 			var k_input = $('#k_input_text').val().toUpperCase();
 			var k_tip_class = getValueFromArray(k_tip_tablice, k_tip_value).class;
@@ -473,6 +584,8 @@ $(document).ready(function () {
 
 			// console log values
 			console.log(k_obcine);
+			console.log(k_obcine_abbr);
+			console.log(k_grb_img);
 			console.log(k_tip_value);
 			console.log(k_ime_tablice);
 			console.log("k_holder_tablica: " + k_holder_tablica);
@@ -483,9 +596,7 @@ $(document).ready(function () {
 			  <span class="pill">Kraj: ${k_obcine}</span>
 			  <span class="pill">Tip tablice: ${k_tip_value}</span>
 			  <span class="pill">Ime: ${k_ime_tablice}</span>
-			  <span class="pill">Okrajšava: ${k_obcine_abbr}</span>
-			  <span class="pill">Vanity: ${k_vanity}</span>
-			 
+			  <span class="pill">Okrajšava: ${k_obcine_abbr}</span> 
 			  <span class="pill">Tip class: ${k_tip_class}</span>
 			  <span class="pill">Tablica template: ${k_holder_tablica}</span>
 			</div>
@@ -494,7 +605,7 @@ $(document).ready(function () {
 			$('#logger-result').html(pillsHtml);
 
 			// change the name of the url in tab-grb class - images are located in 2 folder above and img/grbi and value
-			$('.tab-grb img').attr('src', 'app/assets/img/grbi/' + k_obcine + '.png');
+			$('.tab-grb img').attr('src', 'app/assets/img/grbi/' + k_grb_img);
 
 			// input abbr to the span in tab-okr class
 			$('.tab-okr span').text(k_obcine_abbr);
