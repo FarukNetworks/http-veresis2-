@@ -1164,6 +1164,18 @@ p.signin {
   gap: 190px;
 }
 
+.r4-oz {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-height: 652px;
+  height: 652px;
+  padding-top: 0px;
+  width: 1000px;
+  gap: 190px;
+}
+
 /* Main font sizes avto */
 
 .avto-font .tab-font, .avto-oz .tab-font {
@@ -1178,6 +1190,12 @@ p.signin {
 .avto-font .tab-minus, .avto-oz .tab-minus {
   font-size: 100px;
   line-height: 0;
+}
+
+.avto-font .tab-grb, .avto-oz .tab-grb {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: -20px;
 }
 
 /* Main trakctor font */
@@ -1254,6 +1272,33 @@ p.signin {
   margin-left: 20px;
 }
 
+/* R4 oz font */
+
+.r4-oz .tab-font {
+  font-size: 330px;
+  line-height: 0;
+}
+
+.r4-oz .tab-grb-holder {
+  margin-top: -70px;
+}
+
+.r4-oz .tab-minus {
+  font-size: 330px;
+}
+
+.r4-oz .tab-grb img {
+  width: 220px;
+  height: 220px;
+}
+
+.r4-oz .tab-okr {
+  margin-left: 110px;
+}
+
+.r4-oz .tab-text-1 {
+  margin-left: 20px;
+}
 
 
 .tab-grb img {

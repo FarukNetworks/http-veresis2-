@@ -1,6 +1,4 @@
 $(document).ready(function () {
-	
-	console.log('ready');
 
 	// toastr setting to be very fast
 
@@ -54,7 +52,7 @@ $(document).ready(function () {
 
 		// CE
 		// celje, laško, mozirje, slovenske konjice, velenje, žalec, Šentjur pri Celju, Šmarje pri Jelšah,
-		
+
 		{ "value": "celje", "name": "celje", "img": "celje@2x.png", "abbr": "CE" },
 		{ "value": "lasko", "name": "laško", "img": "lasko@2x.png", "abbr": "CE" },
 		{ "value": "mozirje", "name": "mozirje", "img": "mozirje@2x.png", "abbr": "CE" },
@@ -63,7 +61,7 @@ $(document).ready(function () {
 		{ "value": "zalec", "name": "žalec", "img": "zalec@2x.png", "abbr": "CE" },
 		{ "value": "sentjur", "name": "šentjur", "img": "sentjur@2x.png", "abbr": "CE" },
 		{ "value": "smarje_pri_jelsah", "name": "šmarje pri jelšah", "img": "smarje_pri_jelsah@2x.png", "abbr": "CE" },
-		
+
 		// PO
 		// postojna
 
@@ -116,7 +114,7 @@ $(document).ready(function () {
 		// NM
 
 		// novo mesto, metlika, črnomelj, trebnje
-		
+
 		{ "value": "novo_mesto", "name": "novo mesto", "img": "novo_mesto@2x.png", "abbr": "NM" },
 		{ "value": "metlika", "name": "metlika", "img": "metlika@2x.png", "abbr": "NM" },
 		{ "value": "crnomelj", "name": "črnomelj", "img": "crnomelj@2x.png", "abbr": "NM" },
@@ -175,7 +173,7 @@ $(document).ready(function () {
 
 	// Add options to select id k_obcine from const k_obcine_list
 	$.each(k_obcine_list, function (index, value) {
-		$('#k_obcine').append('<option abbr="'+ value.abbr +'" value="' + value.value + '">' + value.name + ' (' + value.abbr + ')' + '</option>');
+		$('#k_obcine').append('<option abbr="' + value.abbr + '" value="' + value.value + '">' + value.name + ' (' + value.abbr + ')' + '</option>');
 	});
 
 	function validateInput(input) {
@@ -183,12 +181,12 @@ $(document).ready(function () {
 		if (!/[a-zA-Z]/.test(input)) {
 			return false;
 		}
-	
+
 		// Check if input contains at most one dash and not at the beginning or the end
 		if ((input.indexOf('-') !== input.lastIndexOf('-')) || input.startsWith('-') || input.endsWith('-')) {
 			return false;
 		}
-	
+
 		return true;
 	}
 
@@ -196,7 +194,7 @@ $(document).ready(function () {
 
 	$('#k_input_text').on('input change', function () {
 		var input = $(this).val();
-	
+
 		// if vanity is false put a minus after 3 character of k_input
 		// if vanity is true minus is not needed
 		// if (!$('#k_vanity').is(':checked')) {
@@ -204,9 +202,9 @@ $(document).ready(function () {
 		// 		input += '-';
 		// 	}
 		// }
-	
+
 		$(this).val(input);
-	
+
 		if (!validateInput(input)) {
 			toastr.error('Vnesite veljavno registrsko oznako!');
 		} else {
@@ -218,7 +216,7 @@ $(document).ready(function () {
 
 	// tip_avto, tip_avto_o - placeholder: AB-1234, AB-1234 
 	// tip_traktor - AB-12
-	
+
 
 	// tip_moped, tip_r4, tip_r4_o, tip_traktor
 
@@ -232,7 +230,7 @@ $(document).ready(function () {
 			$('.k-input-text').val('AB-12');
 		} else if (k_tip_value === 'tip_moped') {
 			$('.k-input-text').val('AB-12');
-		} else if(k_tip_value === 'tip_r4' || k_tip_value === 'tip_r4_o') {
+		} else if (k_tip_value === 'tip_r4' || k_tip_value === 'tip_r4_o') {
 			$('.k-input-text').val('12-EAV');
 		} else {
 			$('.k-input-text').val('ABC-122');
@@ -256,7 +254,7 @@ $(document).ready(function () {
 				return element.value === value;
 			});
 		}
-	
+
 		var isValid = true;
 
 		$('input[type="text"]', this).each(function () {
@@ -278,7 +276,7 @@ $(document).ready(function () {
 			var k_grb_img = getValueFromArray(k_obcine_list, k_obcine).img;
 			var k_tip_value = $('#k_tip_tablice').val();
 			var k_ime_tablice = $('#k_input_text').val();
-			
+
 
 			var k_obcine_abbr = $('#k_obcine option:selected').attr('abbr');
 			var k_vanity = $('#k_vanity').val();
@@ -305,11 +303,13 @@ $(document).ready(function () {
 			  <span class="pill">Tablica template: ${k_holder_tablica}</span>
 			</div>
 			`;
-			
+
 			// if k_input has "-" inside - put <span class="dash">-</span> in k_input
-			if (k_input.includes('-')) {
-				$('.tab-text-1').html(k_input.replace('-', '<span class="dash">-</span>'));
-			}
+			// if (k_input.includes('-')) {
+
+			// 	var text_tab = $('.tab-text-1');
+			// 	text_tab.html(text_tab.text().replace('-', '<span class="dash">-</span>'));
+			// }
 
 			$('#logger-result').html(pillsHtml);
 
@@ -332,7 +332,50 @@ $(document).ready(function () {
 
 		}
 
+
+
+
 	});
+
+	// I need to print the tablica holder - tablice-holder
+
+	function printDiv(divName = ".tablice-holder") {
+		html2canvas(document.querySelector(divName)).then(canvas => {
+			var dataUrl = canvas.toDataURL();
+	
+			var windowContent = '<!DOCTYPE html>';
+			windowContent += '<html>'
+			windowContent += '<head><title>Print</title>';
+			// Add CSS for A4 landscape
+			windowContent += '<style>@page { size: A4 landscape; }</style>';
+			windowContent += '</head>';
+			windowContent += '<body>'
+			windowContent += '<img src="' + dataUrl + '" style="width: 100%;">'; // Ensure the image scales to fit
+			windowContent += '</body>';
+			windowContent += '</html>';
+	
+			var printWin = window.open('', '');
+			printWin.document.open();
+			printWin.document.write(windowContent);
+	
+			setTimeout(function() {
+				try {
+					printWin.focus();
+					printWin.print();
+					printWin.document.close();
+				} catch (e) {
+					console.error("Error triggering print dialog:", e);
+				}
+			}, 1000); // Adjust the timeout as needed
+		});
+	}
+
+
+	$('#print-btn').on('click', function () {
+		printDiv();
+	});
+
+
 
 	/** cookies */
 	if (!$(".cookies").hasClass("ne-pokazi")) {
@@ -340,7 +383,7 @@ $(document).ready(function () {
 	}
 
 	/* preloader */
-	setTimeout(function(){
+	setTimeout(function () {
 		$("#preloader-first").fadeOut(600);
 	}, 1600);
 
@@ -348,32 +391,32 @@ $(document).ready(function () {
 	// 	$("#preloader").fadeOut(600);
 	// }, 800);
 
-	setTimeout(function(){
+	setTimeout(function () {
 		$(".footer").slideDown();
 	}, 800);
 
 	/* search */
 
-	$('.navbar-form').submit(function(e) {
+	$('.navbar-form').submit(function (e) {
 
-		if($('#searchValue').val() == "") {
+		if ($('#searchValue').val() == "") {
 			e.preventDefault();
 		}
 
 	});
 
-	$('#searchValue').keyup(function() {
-		if($('#searchValue').val() !== "") {
+	$('#searchValue').keyup(function () {
+		if ($('#searchValue').val() !== "") {
 			$('.searchButton').fadeIn(400);
 		}
-		if($('#searchValue').val() == "") {
+		if ($('#searchValue').val() == "") {
 			$('.searchButton').fadeOut(100);
 		}
 	});
 
 	/* sidebar menu show hide */
 
-	$('.sidebar-button').click(function() {
+	$('.sidebar-button').click(function () {
 		$('.sidebar').toggle(1);
 		$('.main').toggleClass("toggled");
 		$('.footer').toggleClass("toggled");
@@ -381,27 +424,27 @@ $(document).ready(function () {
 		$('.sidebar-button').toggleClass("glyphicon-circle-arrow-left");
 	});
 
-	$(window).resize(function(){
-	// odstrani classe ob širini
+	$(window).resize(function () {
+		// odstrani classe ob širini
 		if ($(window).width() > 768) {
 			$('.main').removeClass('toggled');
 			$('.footer').removeClass('toggled');
-			$('.sidebar').css('display','block');
+			$('.sidebar').css('display', 'block');
 
 			if ($('.main').hasClass('toggled-main')) {
 				$('.main').removeClass('toggled-main');
 			}
 		}
 		if ($(window).width() < 768) {
-			$('.sidebar').css('display','none');
+			$('.sidebar').css('display', 'none');
 			$('.main').addClass('toggled-main');
 			$('.sidebar-button').removeClass('glyphicon-circle-arrow-left');
 			$('.sidebar-button').addClass('glyphicon-circle-arrow-right');
 		}
 	});
 
-	$(window).load(function(){
-	// odstrani classe ob širini
+	$(window).load(function () {
+		// odstrani classe ob širini
 		if ($(window).width() > 768) {
 			if ($('.main').hasClass('toggled-main')) {
 				$('.main').removeClass('toggled-main');
@@ -419,10 +462,10 @@ $(document).ready(function () {
 	}
 
 	// validiraj email
-    function isValidEmailAddress(email) {
-        var pattern = new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i);
-        return pattern.test(email);
-    }
+	function isValidEmailAddress(email) {
+		var pattern = new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i);
+		return pattern.test(email);
+	}
 
 	function preveriPassword() {
 		var password1 = $('#password').val();
@@ -440,29 +483,29 @@ $(document).ready(function () {
 
 	// email)
 
-    // $("#email").change(function() {
+	// $("#email").change(function() {
 
-    // if (!isValidEmailAddress($('#email').val())) {
-    //         $('.clientNapisError').show();
-    //         $('.clientNapisError').text('Pravilno vnesite elektronski naslov.');
-    //     } else {
-    //         $('.clientNapisError').hide();
-    //     }
-    // });
+	// if (!isValidEmailAddress($('#email').val())) {
+	//         $('.clientNapisError').show();
+	//         $('.clientNapisError').text('Pravilno vnesite elektronski naslov.');
+	//     } else {
+	//         $('.clientNapisError').hide();
+	//     }
+	// });
 
-    $("#sendMailNotification").submit(function(e) {
+	$("#sendMailNotification").submit(function (e) {
 
 		if (!isValidEmailAddress($('#email').val())) {
-            $('.clientNapisError').show();
-            $('.clientNapisError').text('Pred potrditvijo pravilno vnesite elektronski naslov.');
-        	e.preventDefault();
-        } else {
-            $('.clientNapisError').hide();
-        }
+			$('.clientNapisError').show();
+			$('.clientNapisError').text('Pred potrditvijo pravilno vnesite elektronski naslov.');
+			e.preventDefault();
+		} else {
+			$('.clientNapisError').hide();
+		}
 
 	});
 
-	$("#changePasswordForm").submit(function(e) {
+	$("#changePasswordForm").submit(function (e) {
 
 		var password1 = $('#password').val();
 		var password2 = $('#password2').val();
@@ -507,7 +550,7 @@ $(document).ready(function () {
 					label: "&nbsp;Da, odjavi me&nbsp;",
 					className: "btn-primary",
 					callback: function () {
-						location.href= siteUrl + '/odjava';
+						location.href = siteUrl + '/odjava';
 					}
 				},
 			}
@@ -540,7 +583,7 @@ $(document).ready(function () {
 $(document).ajaxComplete(function () {
 
 	/* checkbox poslji - unicene tablice */
-	$('.poslji-po-posti').click(function() {
+	$('.poslji-po-posti').click(function () {
 		if ($('input:checkbox').is(':checked')) {
 			$(".poslji").show();
 		} else {
@@ -549,38 +592,38 @@ $(document).ajaxComplete(function () {
 	});
 
 
-	
-    /* next - prev */
-    $('.prev').on('click', function() {
-    	// $("#preloaderImage").show();
-    	// alert("dela");
- //        $('.table-unicene').addClass('animated fadeOut');
- //        $('.registrationPicture').addClass('animated fadeOut');
 
- //        setTimeout(function(){
-	// 	$('.table-unicene').removeClass('animated fadeOut');
- //        $('.registrationPicture').removeClass('animated fadeOut');
-	// }, 800);
+	/* next - prev */
+	$('.prev').on('click', function () {
+		// $("#preloaderImage").show();
+		// alert("dela");
+		//        $('.table-unicene').addClass('animated fadeOut');
+		//        $('.registrationPicture').addClass('animated fadeOut');
+
+		//        setTimeout(function(){
+		// 	$('.table-unicene').removeClass('animated fadeOut');
+		//        $('.registrationPicture').removeClass('animated fadeOut');
+		// }, 800);
 		$("#preloaderImage").show();
-    });
+	});
 
-    $('.next').on('click', function() {
-    	// $("#preloaderImage").show();
-    	// alert("dela");
- //        $('.table-unicene').addClass('animated fadeOut');
- //        $('.registrationPicture').addClass('animated fadeOut');
+	$('.next').on('click', function () {
+		// $("#preloaderImage").show();
+		// alert("dela");
+		//        $('.table-unicene').addClass('animated fadeOut');
+		//        $('.registrationPicture').addClass('animated fadeOut');
 
- //        setTimeout(function(){
-	// 	$('.table-unicene').removeClass('animated fadeOut');
- //        $('.registrationPicture').removeClass('animated fadeOut');
-	// }, 800);
+		//        setTimeout(function(){
+		// 	$('.table-unicene').removeClass('animated fadeOut');
+		//        $('.registrationPicture').removeClass('animated fadeOut');
+		// }, 800);
 		$("#preloaderImage").show();
-    });
-  
+	});
 
-    $(".showPlate").on('click', function() {
-    	$("#preloaderImage").show();
-    });
 
-	
+	$(".showPlate").on('click', function () {
+		$("#preloaderImage").show();
+	});
+
+
 });

@@ -5,6 +5,8 @@
 
 {% block content %}
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"> 
 	
 	{% include 'preloader.twig' %}
@@ -35,10 +37,10 @@
                         <label for="k_tip_tablice">Tip tablice:</label>
                         <select id="k_tip_tablice" class="k_tip_tablice" name="k_tip_tablice">
                             <option value="tip_avto">Avto</option>
-                            <option value="tip_avto_o">Avto ožan</option>
+                            <option value="tip_avto_o">Avto (ožane)</option>
                             <option value="tip_moped">Moped</option>
-                            <option value="tip_r4">R4</option>
-                            <option value="tip_r4_o">R4 ožan</option>
+                            <option value="tip_r4">R4 (Terenci)</option>
+                            <option value="tip_r4_o">R4 ožane (Terenci)</option>
                             <option value="tip_traktor">Motor/Traktor</option>
                         </select>
                     </div>
@@ -52,20 +54,6 @@
                         <label>Potrdi</label>
                         <input type="submit" class="cg_calculate" value="Prikaži"></input>
                     </div>
-
-                    {# <div class="k-input-field k-sub-input">
-                        <label for="k_vanity" title="Kombinacija znakov mora vsebovati najmanj eno črko, izbrani del označbe pa lahko vsebuje največ en pomišljaj, vendar ne na začetku ali koncu oznake. Izbrati je mogoče le tako kombinacijo znakov, ki jo omogoča prostor na tablici. Izbrani del označbe ne sme vsebovati kratic državnih organov, tujih predstavništev in mednarodnih organizacij. Žaljivi, vulgarni ali drugi neprimerni izrazi prav tako niso dovoljeni.
-
-Cena para avtomobilskih registrskih tablic (520 x 120 mm) z oznako po izbiri je 128,86 €.
-
-Proizvajalec tablice dobavi najkasneje v roku 14 dni po prejemu naročila, kar upoštevajte ob naročilu, saj registracija vozila brez tablic ni možna.
-
-Tablice z vsebino po izbiri so vezane na osebo, ki jih je naročila, vseeno pa je prenos na drugo osebo možen s spodnjim obrazcem.">Po izbiri *: 
-                        
-                
-                        </label>
-                        <input type="checkbox" id="k_vanity" class="k_vanity" name="k_vanity" value="0" />
-                    </div> #}
 
                 </div>
 
@@ -107,6 +95,16 @@ Tablice z vsebino po izbiri so vezane na osebo, ki jih je naročila, vseeno pa j
     <div class="k-info-section">
 
         <div class="k-info-holder">
+
+            {# info box with bootstrap #}
+
+            <div class="alert alert-info" role="alert">
+                <small>Prikaz je samo informativne narave, da dobite občutek, kako bi lahko izgledala vaša tablica. Za najboljšo predstavo o tablici, si oglejte predstavitev na prenosniku ali večjem zaslonu. </small>
+            </div>
+
+            <a class="btn btn-primary" id="print-btn"><span class="glyphicon left-sidebar-icon glyphicon-print"></span> Sprintaj testno tablico</a>
+
+        
             <div class="k-info-title">
                 <h4>Registrske tablice po izbiri *</h4>
             </div>
