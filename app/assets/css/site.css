@@ -1061,6 +1061,11 @@ p.signin {
 .traktor-font {
   font-family: 'MOTORTRAKTOR';
 }
+
+.r4-font {
+  font-family: 'R4';
+}
+
 .r4-oz {
   font-family: 'R4-OZ';
 }
@@ -1068,8 +1073,6 @@ p.signin {
 .moped-font {
   font-family: 'MOPED';
 }
-
-
 
 .tablice-holder {
 }
@@ -1101,6 +1104,14 @@ p.signin {
   height: 743px;
   max-height: 743px;
 }
+
+#r4-katrca {
+  background: url('../img/tablice-ozadja/R4-tablica.jpg') no-repeat;
+  background-size: contain;
+  width: 1000px;
+  height: 652px;
+}
+
 
 /* Main tablica holder */
 
@@ -1139,6 +1150,18 @@ p.signin {
   width: 1000px;
   gap: 180px;
   padding-top: 130px;
+}
+
+.r4-font {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-height: 652px;
+  height: 652px;
+  padding-top: 0px;
+  width: 1000px;
+  gap: 190px;
 }
 
 /* Main font sizes avto */
@@ -1202,6 +1225,36 @@ p.signin {
 .moped-font .tab-text-1 {
   margin-left: 20px;
 }
+
+/* R4 font */
+
+.r4-font .tab-font {
+  font-size: 330px;
+  line-height: 0;
+}
+
+.r4-font .tab-grb-holder {
+  margin-top: -70px;
+}
+
+.r4-font .tab-minus {
+  font-size: 330px;
+}
+
+.r4-font .tab-grb img {
+  width: 220px;
+  height: 220px;
+}
+
+.r4-font .tab-okr {
+  margin-left: 110px;
+}
+
+.r4-font .tab-text-1 {
+  margin-left: 20px;
+}
+
+
 
 .tab-grb img {
   width: 100px;
