@@ -10,7 +10,7 @@ $(document).ready(function () {
 		"positionClass": "toast-top-right",
 		"preventDuplicates": true,
 		"onclick": null,
-		"showDuration": "300",
+		"showDuration": "900",
 		"hideDuration": "100",
 		"timeOut": "50"
 	};
@@ -176,41 +176,39 @@ $(document).ready(function () {
 		$('#k_obcine').append('<option abbr="' + value.abbr + '" value="' + value.value + '">' + value.name + ' (' + value.abbr + ')' + '</option>');
 	});
 
-	function validateInput(input) {
-		// Check if input contains at least one letter
-		if (!/[a-zA-Z]/.test(input)) {
-			return false;
-		}
+	// function validateInput(input) {
+	// 	// Check if input contains at least one letter
+	// 	if (!/[a-zA-Z]/.test(input)) {
+	// 		return false;
+	// 	}
 
-		// Check if input contains at most one dash and not at the beginning or the end
-		if ((input.indexOf('-') !== input.lastIndexOf('-')) || input.startsWith('-') || input.endsWith('-')) {
-			return false;
-		}
+	// 	// Check if input contains at most one dash and not at the beginning or the end
+	// 	if ((input.indexOf('-') !== input.lastIndexOf('-')) || input.startsWith('-') || input.endsWith('-')) {
+	// 		return false;
+	// 	}
 
-		return true;
-	}
+	// 	return true;
+	// }
 
 	// on change of k_input and if k_vanity to true put a minus after 3 character of k_input
 
-	$('#k_input_text').on('input change', function () {
-		var input = $(this).val();
+	// $('#k_input_text').on('input change', function () {
+	// 	var input = $(this).val();
 
-		// if vanity is false put a minus after 3 character of k_input
-		// if vanity is true minus is not needed
-		// if (!$('#k_vanity').is(':checked')) {
-		// 	if (input.length === 3 || input.length === 4) {
-		// 		input += '-';
-		// 	}
-		// }
+	// 	// if empty
 
-		$(this).val(input);
+	// 	if (input === '') {
+	// 		toastr.error('Vnesite veljavno registrsko oznako!');
+	// 	}
+		
+	// 	$(this).val(input);
 
-		if (!validateInput(input)) {
-			toastr.error('Vnesite veljavno registrsko oznako!');
-		} else {
-			toastr.success('Registrska oznaka je veljavna!');
-		}
-	});
+	// 	if (!validateInput(input)) {
+	// 		toastr.error('Vnesite veljavno registrsko oznako!');
+	// 	} else {
+	// 		toastr.success('Registrska oznaka je veljavna!');
+	// 	}
+	// });
 
 	// switch placeholder based on k_tip_tablice
 
@@ -340,6 +338,8 @@ $(document).ready(function () {
 	// I need to print the tablica holder - tablice-holder
 
 	function printDiv(divName = ".tablice-holder") {
+
+
 		html2canvas(document.querySelector(divName)).then(canvas => {
 			var dataUrl = canvas.toDataURL();
 	
@@ -350,7 +350,7 @@ $(document).ready(function () {
 			windowContent += '<style>@page { size: A4 landscape; }</style>';
 			windowContent += '</head>';
 			windowContent += '<body>'
-			windowContent += '<img src="' + dataUrl + '" style="width: 100%;">'; // Ensure the image scales to fit
+			windowContent += '<img src="' + dataUrl + '" style="width: 90%;">';
 			windowContent += '</body>';
 			windowContent += '</html>';
 	

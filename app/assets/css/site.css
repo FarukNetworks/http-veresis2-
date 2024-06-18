@@ -1000,6 +1000,15 @@ p.signin {
 
 /* Konfigurator */
 
+@media print {
+
+  #navbar, .nav-sidebar {
+    display: none;
+  }
+
+}
+
+
 .k-user-inputs-holder {
   display: flex;
   flex-direction: row;
@@ -1074,13 +1083,74 @@ p.signin {
   font-family: 'MOPED';
 }
 
+/* Grid for protection */
+
 .tablice-holder {
+  position: relative;
+  margin-bottom: 20px;
 }
+
+/* 
+.tablice-holder:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+
+  background: repeating-linear-gradient(
+  -45deg,
+  #ff01013b,
+  #00000011 20px,
+  #0000001f 20px,
+  #00000017 10px
+);
+} 
+
+*/
+
+/* .k-grid {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: repeating-linear-gradient( -45deg, #ff01013b, #00000011 20px, #0000001f 20px, #00000017 10px ) !important;
+}
+
+.k-print-rel {
+  position: relative;
+}
+
+.k-print-grid {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: repeating-linear-gradient( -45deg, #ff01013b, #00000011 20px, #0000001f 20px, #00000017 10px ) !important;
+
+} */
+
+
+.k-alert {
+  display: inline-block;
+}
+
+.k-info-holder {
+  display: block;
+}
+
 
 /* Main tablica graphic */
 
 #tablica-avto {
-  background: url('../img/tablice-ozadja/AVTO-tablica.jpg') no-repeat;
+  background-image: url('../img/tablice-ozadja/AVTO-tablica.jpg') !important;
+  background-repeat: no-repeat;
   aspect-ratio: 4.19/1;
   background-size: contain;
   width: 1000px;
@@ -1089,7 +1159,8 @@ p.signin {
 }
 
 #tablica-traktor {
-  background: url('../img/tablice-ozadja/Motor-traktor-tablica.jpg') no-repeat;
+  background-image: url('../img/tablice-ozadja/Motor-traktor-tablica.jpg');
+  background-repeat: no-repeat;
   aspect-ratio: 1/1;
   background-size: contain;
   width: 1000px;
@@ -1097,7 +1168,8 @@ p.signin {
 }
 
 #tablica-moped {
-  background: url('../img/tablice-ozadja/Scooter-tablica.jpg') no-repeat;
+  background-image: url('../img/tablice-ozadja/Scooter-tablica.jpg');
+  background-repeat: no-repeat;
   aspect-ratio: 1000/743;
   background-size: contain;
   width: 1000px;
@@ -1106,7 +1178,8 @@ p.signin {
 }
 
 #r4-katrca {
-  background: url('../img/tablice-ozadja/R4-tablica.jpg') no-repeat;
+  background-image: url('../img/tablice-ozadja/R4-tablica.jpg');
+  background-repeat: no-repeat;
   background-size: contain;
   width: 1000px;
   height: 652px;
