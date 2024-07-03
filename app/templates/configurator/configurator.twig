@@ -14,8 +14,7 @@
 	{% include 'sidebar-button.twig' %}
 
 	<ul class="breadcrumb">
-		<li class="active">Seznam naročil</li>
-		<!--<li class="active">Podrobnosti</li>-->
+		<li class="active">Konfigurator</li>
 	</ul>
 
     <div class="row">
@@ -29,24 +28,26 @@
                 <div class="k-user-inputs-holder">
 
                     <div class="k-input-field">
-                        <label for="k_obcine">Občina:</label>
-                        <select id="k_obcine" class="k_obcine" name="k_obcine"></select>
+                        <label for="k_tip_tablice">Tip tablice:</label>
+                        <select id="k_tip_tablice" class="k_tip_tablice" name="k_tip_tablice">
+                            <option value="tip_avto">Avto - 520x120 mm</option>
+                            <option value="tip_avto_o">Avto - 520 x 120 mm (ožane)</option>
+                            <option value="tip_r4">R4 - 340 x 220 mm</option>
+                            <option value="tip_r4_o">R4 - 340 x 220 mm (ožane)</option>
+                            <option value="tip_traktor">Motor – 180 x 180 mm</option>
+                            <option value="tip_moped">Scooter/Moped - 150 x 110 mm</option>
+                            <option value="tip_moped_rdec">Kolo z pomožnim motorjem  - 150 x 110 mm</option>
+                        </select>
                     </div>
 
                     <div class="k-input-field">
-                        <label for="k_tip_tablice">Tip tablice:</label>
-                        <select id="k_tip_tablice" class="k_tip_tablice" name="k_tip_tablice">
-                            <option value="tip_avto">Avto</option>
-                            <option value="tip_avto_o">Avto (ožane)</option>
-                            <option value="tip_moped">Moped</option>
-                            <option value="tip_r4">R4 (Terenci)</option>
-                            <option value="tip_r4_o">R4 ožane (Terenci)</option>
-                            <option value="tip_traktor">Motor/Traktor</option>
-                        </select>
+                        <label for="k_obcine">Upravna enota (grb):</label>
+                        <select id="k_obcine" class="k_obcine" name="k_obcine"></select>
                     </div>
+
                     
                     <div class="k-input-field">
-                        <label>Ime na tablici:</label>
+                        <label>Vsebina tablice:</label>
                         <input type="text" id="k_input_text" minlength="4" maxlength="10" class="k-input-text" value="12-EAV" placeholder="Vpišite tukaj ..." />
                     </div>
 
@@ -102,7 +103,7 @@
             {# info box with bootstrap #}
 
             <div class="alert alert-info k-alert" role="alert">
-                <small>Prikaz je samo informativne narave, da dobite občutek, kako bi lahko izgledala vaša tablica. <br>Za najboljšo predstavo o tablici, si oglejte predstavitev na prenosniku ali večjem zaslonu. </small>
+                <small>Informativni prikaz registrske tablice </small>
             </div>
 
             
@@ -110,7 +111,7 @@
         </div>
 
         <div class="k-info-holder">
-            <a class="btn btn-primary" id="print-btn"><span class="glyphicon left-sidebar-icon glyphicon-print"></span> Sprintaj testno tablico</a>
+            <a class="btn btn-primary" id="print-btn"><span class="glyphicon left-sidebar-icon glyphicon-print"></span> Natisni informativni prikaz</a>
         </div>
 
     </div>

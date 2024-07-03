@@ -1079,7 +1079,7 @@ p.signin {
   font-family: 'R4-OZ';
 }
 
-.moped-font {
+.moped-font, .moped-font-rdec {
   font-family: 'MOPED';
 }
 
@@ -1089,53 +1089,6 @@ p.signin {
   position: relative;
   margin-bottom: 20px;
 }
-
-/* 
-.tablice-holder:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 20px;
-
-  background: repeating-linear-gradient(
-  -45deg,
-  #ff01013b,
-  #00000011 20px,
-  #0000001f 20px,
-  #00000017 10px
-);
-} 
-
-*/
-
-/* .k-grid {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: repeating-linear-gradient( -45deg, #ff01013b, #00000011 20px, #0000001f 20px, #00000017 10px ) !important;
-}
-
-.k-print-rel {
-  position: relative;
-}
-
-.k-print-grid {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: repeating-linear-gradient( -45deg, #ff01013b, #00000011 20px, #0000001f 20px, #00000017 10px ) !important;
-
-} */
-
 
 .k-alert {
   display: inline-block;
@@ -1212,7 +1165,7 @@ p.signin {
   gap: 300px;
 }
 
-.moped-font {
+.moped-font, .moped-font-rdec {
   display: flex;
   flex-direction: column;
   
@@ -1294,26 +1247,33 @@ p.signin {
 
 /* Moped scooter fonts */
 
-.moped-font .tab-font {
+.moped-font .tab-font, .moped-font-rdec .tab-font {
   font-size: 330px;
   line-height: 0;
- 
 }
 
-.moped-font .tab-minus {
+.moped-font-rdec .tab-font {
+  color: rgba(255,0,0);
+}
+
+.moped-font .tab-minus, .moped-font-rdec .tab-minus {
   font-size: 330px;
 }
 
-.moped-font .tab-grb img {
+.moped-font-rdec .tab-minus {
+  color: rgba(255,0,0);
+}
+
+.moped-font .tab-grb img, .moped-font-rdec .tab-grb img {
   width: 220px;
   height: 220px;
 }
 
-.moped-font .tab-okr {
+.moped-font .tab-okr, .moped-font-rdec .tab-okr {
   margin-left: 110px;
 }
 
-.moped-font .tab-text-1 {
+.moped-font .tab-text-1, .moped-font-rdec .tab-text-1 {
   margin-left: 20px;
 }
 
