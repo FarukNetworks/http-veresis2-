@@ -15,6 +15,12 @@ $(document).ready(function () {
 		"timeOut": "1000"
 	};
 
+	// default values from tablica input
+	var k_ime_tablice = $('#k_input_text').val();
+	var k_tablica = $('.tab-text-1');
+	k_tablica.text(k_ime_tablice);
+
+	
 	const k_obcine_list = [
 
 		// abbr: "LJ", cerknica, domzale, hrastnik, kočevje, ribnica, trbovlje, zagorje, litija, grosuplje, kamnik, ljubljana, logatec, vrhnika
@@ -115,7 +121,7 @@ $(document).ready(function () {
 
 		// novo mesto, metlika, črnomelj, trebnje
 
-		{ "value": "novo_mesto", "name": "Novo mesto", "img": "novo_mesto@2x.png", "abbr": "NM" },
+		{ "value": "novo_mesto", "name": "Novo Mesto", "img": "novo_mesto@2x.png", "abbr": "NM" },
 		{ "value": "metlika", "name": "Metlika", "img": "metlika@2x.png", "abbr": "NM" },
 		{ "value": "crnomelj", "name": "Črnomelj", "img": "crnomelj@2x.png", "abbr": "NM" },
 		{ "value": "trebnje", "name": "Trebnje", "img": "trebnje@2x.png", "abbr": "NM" },

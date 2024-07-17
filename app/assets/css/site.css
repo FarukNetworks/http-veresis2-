@@ -1109,6 +1109,11 @@ p.signin {
   width: 1000px;
   height: 240px;
   max-height: 290px;
+  padding-left: 89px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 #tablica-traktor {
@@ -1118,6 +1123,10 @@ p.signin {
   background-size: contain;
   width: 1000px;
   height: 1000px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 #tablica-moped {
@@ -1148,7 +1157,6 @@ p.signin {
   align-items: center;
   max-height: 240px;
   height: 240px;
-  margin-left: 49px;
   padding-top: 20px;
   width: 1000px;
 }
