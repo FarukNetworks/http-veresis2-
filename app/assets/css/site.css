@@ -427,7 +427,7 @@ p.signin {
 
 .platebody {
   overflow: hidden !important;
-  height: 298px;
+  height: auto;
 }
 
 .close {
