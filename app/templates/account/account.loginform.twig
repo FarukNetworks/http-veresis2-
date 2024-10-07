@@ -45,12 +45,14 @@
                 <input type="hidden" name="csrf_value" value="{{ csrf.value }}">
                 <input type="hidden" name="retUrl" value="{{ retUrl }}">
 
-                <button class="btn btn-primary prijava" type="submit">vstopi</button>
+                <button class="btn btn-primary prijava" type="submit">
+                    <span class="glyphicon glyphicon-log-in"></span> Vstopi
+                </button>
 
             </form> 
             
             <p class="signin">Ta aplikacija je namenjena naročnikom registrskih tablic.</p>
-            <p class="signin">Ste pozabili geslo? Kliknite <a href="{{ constant('APPBASEURL')}}pozabljeno-geslo">tukaj</a>.</p>
+            <p class="signin">Ste pozabili geslo? Kliknite <a href="{{ constant('APPBASEURL')}}pozabljeno-geslo"><span class="glyphicon glyphicon-lock"></span> tukaj</a>.</p>
             <p class="signin">Če imate težave z dostopom se obrnite na mail: <a href="mailto:info@kig.si">info@kig.si</a></p>
 
         </div>
